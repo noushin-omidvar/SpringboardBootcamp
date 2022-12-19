@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    <title>Noushin Omidvar</title>
+
+
+</head>
+<body>
+
+<div class="header">
+  <h1>Noushin Omidvar</h1>
+  <p>Software developer</p>
+</div>
+
+<div class="topnav">
+  <a href="index.html">Home</a>
+  <a href="https://github.com/noushin-omidvar/SpringboardBootcamp/tree/main/Exercises">Exercises</a>
+ <!--<a href="About me">Link</a>
+  <a href="Contact" style="float:right">Link</a> -->
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+
+    <div class="card">
+      <h2>DOM and DOM events</h2>
+      <h5>2nd week learning summary, Dec 18, 2022</h5>
+      <h3><b>1. DOM</b></h3>
+      <p> <b>Document Object Model (DOM)</b>  is the programming interface for HTML and 
+        a representation of it that can be accessed using JavaScript.</p>
+        <p> Using JavaScript and through DOM we can manipulate HTML.</p>
+        <p> The document object has properties and functions that can help us to 
+        access HTML elements such as:  
+      </p>
+      <ul>
+        <li><b>getElementById():</b> finds the first matching id</li>
+        <li><b>getElementByTagName():</b> returns a list of all of the elements that match the string passed to the function</li>
+        <li><b>getElementByClassName():</b> returns a list of all of the elements that have a class attribute, which matches the string passed to the function</li>
+        <li><b>querySelector():</b> returns the first element that matches the CSS selector passed to the function.</li>
+        <li><b>querySelectorALL():</b> returns all the elements that matches the CSS selector passed to the function</li>
+      </ul>
+
+      <p>
+        <h3>2. DOM manipulation</h3>
+        <p> Values and attributes of elements in DOM can be modified. </p>
+        <p>Text can be modified by accessing:
+        <ul>
+          <li>innerHTML</li>
+          <li>innerText</li>
+          <li>textContent</li>
+        </ul>  
+        Any inline CSS properties on an element can be accessed using the style property. 
+      </p>
+        <p> In order to access an attribute on an element, we can use the getAttribute method 
+        and to set an attribute on an element, we can use the setAttribute method.
+      </p>
+      <p>
+        To manipulate the class attribute in JavaScript, we can use:
+        <ul>
+
+        <li>setAttribute(“class”) - this will override the class</li> 
+        <li>className - this will give you a string representation of the class</li> 
+        <li>classList - this will give you an array-like object to add, remove or toggle classes</li> 
+      </ul>
+      </p>
+      <p>To create an HTML element, we can use the createElement function and pass in the name of the element</p>
+      <p>After creating an element we can <code>append</code>/ <code>prepend</code>  it as child  to a parent element</p>  
+      <p>If we want to remove elements in the DOM, we can use remove method.</p>
+      <p>We can access siblings and children elements using relevant attributes like
+        <code> children</code>, 
+        <code> firstElementChild</code>, 
+        <code>lastElementChild</code>, 
+        <code> previousElemnetChild</code>, 
+        <code> previousElementSibling</code> and
+        <code> nextElementSibling</code>. 
+      </p>
+  </p>
+  <h3>3. DOM Events</h3>
+  <p>DOM events are “actions” that occur as a result of something the user or the browser does.
+    We can write JavaScript codes that listens for events - and react accordingly! 
+    One optintion is to use <code>AddEventListener</code>. 
+    Inside of the callback to addEventListener, we get access to a special object as a parameter - the event object.
+
+
+  </p> 
+
+    </div>
+
+    <div class="card">
+      <h2>Hello World!</h2>
+      <h5>My first post, Dec 15, 2022</h5>
+      <p>This is Noushin. 
+        This webpage is going to be a place where I will share my learning process in Springboard boot camp.
+        You can find my exercises and capstone projects here. 
+        I will share my daily progress and a summary of what I learnt every day. 
+    <p>I will try to update and improve the webpage appearance as I learn more about HTML, CSS and JavaScript.</p>
+    </div>
+  </div>
+
+
+
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <img src="myImage.JPG" height="300px" margin="auto" display="block">
+      <p>This is a happy me coding on my birthday :D</p> 
+
+    </div>
+    <!---
+    <div class="card">
+      <h3>Popular Post</h3>
+      <div class="fakeimg"><p>Image</p></div>
+      <div class="fakeimg"><p>Image</p></div>
+      <div class="fakeimg"><p>Image</p></div>
+    </div>
+    <div class="card">
+      <h3>Follow Me</h3>
+      <p>Some text..</p>
+    </div>
+    -->
+  </div>
+</div>
+<!---
+<div class="footer">
+  <h2>ALL RIGHTS RESERVED</h2>
+</div>
+    -->
+</body>
+</html>
+
+
