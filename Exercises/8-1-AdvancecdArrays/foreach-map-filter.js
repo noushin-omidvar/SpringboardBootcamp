@@ -44,7 +44,7 @@ Examples:
 function showFirstAndLast(arr){
     let firstLast = []
     arr.forEach(function(val){
-    firstLast.push(val[0]+val[val.length])
+    firstLast.push(val[0]+val[val.length-1])
   })
   return firstLast  
 }
@@ -59,10 +59,10 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
-    arr.forEach(function(obj){
-        obj[key] = value
+    arr.forEach(function(val){
+        val[key] = value
     })
-    return obj
+    return arr
 }
 
 /*
@@ -77,10 +77,16 @@ Examples:
 */
 function vowelCount(str){
     str = str.toLowerCase()
-    let vowelDict = {'a':0, 'e':0, 'i':0, 'o':0, 'u':0}
-    [...str].forEach(function(char){
-        if ("aeiou".includes(char)){
-        vowelDict[char] ++ }
+    let vowelDict = {}
+    str.split("").forEach(function(val){
+        if ("aeiou".includes(val)){
+
+             if (typeof vowelDict[val]=== 'undefined'){
+                vowelDict[val] = 1
+             }
+             else{
+             vowelDict[val]++}
+         }
     })
     return vowelDict  
 }
@@ -118,7 +124,7 @@ Examples:
 */
 
 function extractKey(arr, key){
-    return arr.map(function(val){return val.key})
+    return arr.map(function(val){return val[key]})
     
 }
 
@@ -143,9 +149,10 @@ Examples:
 */
 
 function filterByValue(arr, key) {
-    arr.filter(function(val){
+    filtered = arr.filter(function(val){
         return key in val
     })
+    return filtered
 }
 
 /*
@@ -168,10 +175,11 @@ Examples:
 */
 
 function findInObj(arr, key, searchValue) {
-    return arr.filter(function(val, i , arr){
+    const found =  arr.filter(function(val, i , arr){
         if (val[key]=== searchValue){return true}
-        else {return false}
+        else {return undefined}
         })
+    return found[0]
 }
 
 /*
