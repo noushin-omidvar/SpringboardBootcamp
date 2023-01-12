@@ -9,6 +9,7 @@ console.log(yearNeptuneDiscovered); // ?
 ```
 Answer:
 8
+
 1846
 
 
@@ -44,7 +45,9 @@ getUserData({}) // ?
 ```
 answer:
 "Your name is Alejandro and you like purple"
+
 "Your name is Melissa and you like green"
+
 "Your name is undefined and you like green"
 
 ## Array Destructuring 1
@@ -57,8 +60,11 @@ console.log(second); // ?
 console.log(third); // ?
 ```
 answer:
+
 "Maya"
+
 "Marisa"
+
 "Chi"
 
 ## Array Destructuring 2
@@ -77,8 +83,11 @@ console.log(whiskers); // ?
 console.log(aFewOfMyFavoriteThings); // ?
 ```
 answer:
+
 "Raindrops on roses"
+
 "whiskers on kittens"
+
 [ "Bright copper kettles", "warm woolen mittens", "Brown paper packages tied up with strings"]
 
 ## Array Destructuring 3
@@ -90,6 +99,7 @@ let numbers = [10, 20, 30];
 console.log(numbers) // ?
 ```
 answer:
+
 [20, 10, 30]
 
 
@@ -107,6 +117,7 @@ var b = obj.numbers.b;
 ```
 ### Write an ES2015 Version 
 answer:
+
 ```
 let obj = {numbers: {a: 1, b: 2}};
 const {numbers: {a, b} } = obj
@@ -122,6 +133,7 @@ arr[1] = temp;
 
 ## Write an ES2015 Version 
 anwer:
+
 ```
 let arr = [1, 2];
 [arr[0], arr[1]] = [arr[1], arr[0]]
@@ -150,6 +162,7 @@ raceResults(['Tom', 'Margaret', 'Allison', 'David', 'Pierre'])
   }
 ```
 answer:
+
 ```
 const raceResults = ([first, second, third, ...rest]) => ({first, second, third, rest})
 ```
