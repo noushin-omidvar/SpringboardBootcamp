@@ -16,7 +16,7 @@ const $label = $("<label>").text("Title:");
 
 //Create the input element
 const $input = $(
-  '<input type="text" pattern=[A-Za-z]{3} title="At least two characters" id="title">'
+  '<input type="text" minlength=2 title="At least two characters" id="title">'
 );
 
 //Insert the input into the label
@@ -50,7 +50,12 @@ $("form").append($button);
 $("form").append($("<br>"));
 $("form").append($("<br>"));
 
-$("body").append($("<table>").css({ width: "90%", border: "solid 1px" }));
+$sortBtn = $('<button type=submit id ="sort" value="sort">').text("sort");
+$("body").append($sortBtn);
+
+$("body").append(
+  $("<table id='myTable'>").css({ width: "90%", border: "solid 1px" })
+);
 $("table").append($("<thead>"));
 $("thead").append($("<tr>"));
 $("tr").append($("<th>").text("Title"));
@@ -64,7 +69,9 @@ $("form").on("submit", function (evt) {
   const rate = $("#rating").val();
 
   $row = $("<tr>").addClass("row");
-  $row.append($("<td>").text(title));
+
+  $titleTD = $("<td>").text(title);
+  $row.append($titleTD);
   $row.append($("<td>").text(rate));
   $row.append($("<button id='remove'>").text("X"));
   $("table").append($row);
@@ -75,9 +82,47 @@ $("table").on("click", "#remove", function (e) {
   e.target.parentElement.remove();
 });
 
+$("#sort").on("click", function (e) {
+  e.preventDefault();
+  sortTable();
+});
 /*
 Further Study
 Ensure that the rating of a movie can only be between 0 and 10.
 Ensure that a title has at least 2 characters in it.
 Allow users to sort alphabetically by the title of the movie or by the rating of the movie from lowest to highest and vice versa.
 */
+function sortTable() {
+  let table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  /* Make a loop that will continue until
+    no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+      first, which contains table headers): */
+    for (i = 1; i < rows.length - 1; i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      // Check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        // If so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
