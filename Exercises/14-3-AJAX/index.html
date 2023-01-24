@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Giphy Party!</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&family=Rubik+Gemstones&family=Rubik+Vinyl&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body class="bg-dark">
+    <div class="container">
+      <h1
+        class="text-center mt-4 mb-4"
+        style="
+          font-family: Rubik Vinyl, cursive;
+          color: gold;
+          font-weight: bolder;
+        "
+      >
+        GIPHY Party
+      </h1>
+      <form action="get" class="form-inline d-flex justify-content-center mb-4">
+        <input
+          type="text"
+          id="searchTerm"
+          required
+          class="form-control form-rounded"
+          placeholder="Search GIFs"
+        />
+        <div class="input-group-append">
+          <button
+            id="searchBtn"
+            class="btn btn-warning"
+            value="Search Giphy!"
+            type="submit"
+          >
+            Search GIPHY!
+          </button>
+        </div>
+
+        <div class="search-button__GradientBox-sc-10g0hll-2 bstLjY"></div>
+
+        <button id="removeAll" class="btn btn-danger ml-2">Remove GIFs</button>
+      </form>
+      <div class="row" id="gif-body"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="app.js"></script>
+  </body>
+</html>
