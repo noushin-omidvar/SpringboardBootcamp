@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TV Maze</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap/dist/css/bootstrap.css"
+    />
+  </head>
+  <body class="bg-dark">
+    <div class="container">
+      <h1
+        class="text-warning mt-5"
+        style="
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+          font-weight: bolder;
+        "
+      >
+        TV Maze
+      </h1>
+      <form class="form-inline" id="search-form">
+        <input
+          class="form-control"
+          id="search-query"
+          placeholder="Search TV Maze"
+        />
+        <button class="btn btn-warning" type="submit">Go!</button>
+      </form>
+
+      <div class="row mt-5 g-5" id="shows-list"></div>
+      <br />
+      <section class="text-warning" style="display: none" id="episodes-area">
+        <h2>Episodes</h2>
+        <ul id="episodes-list"></ul>
+      </section>
+
+      <section class="text-warning" style="display: none" id="casts-area">
+        <h2>Casts</h2>
+        <ul id="casts-list"></ul>
+      </section>
+
+      <script src="http://unpkg.com/jquery"></script>
+      <script src="http://unpkg.com/axios/dist/axios.js"></script>
+      <script src="tvmaze.js"></script>
+    </div>
+  </body>
+</html>
