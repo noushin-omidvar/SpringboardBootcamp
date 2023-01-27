@@ -1,37 +1,100 @@
-body {
-  display:flex;  justify-content:center;
-  
+h1{
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: verdana;
+  color: rgb(83, 26, 196);
+
 }
 
-/* html {
-  text-align: center;
-} */
 
 /* game board table */
+
+.inputContainer{
+  margin-top: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+
+
+}
+
 
 #board td {
   width: 50px;
   height: 50px;
-  border: solid 1px #666;
-  align-items: center ;
+  border: solid 5px blue;
+  border-radius: 50%;
+  background-color: white;
+
+}
+
+table{  
+  background-color: rgb(65, 65, 248);
+}
+
+#game{
+  margin-top: 1%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
 }
 
 /* pieces are div within game table cells: draw as colored circles */
 
 .piece {
-  margin: 5px;
-  width: 80%;
-  height: 80%;
+  /* position:absolute; */
+  margin: 3px;
+  width: 90%;
+  height: 90%;
   border-radius: 50%;
+  animation: fall-down 1s;
 }
+
+@keyframes fall-down {
+  from {
+      transform: translateY(-500px);
+  }
+  to {
+      transform: translateY(0);
+  }
+}
+
+  
 
 
 /* column-top is table row of clickable areas for each column */
 
 #column-top td {
-  border: dashed 1px lightgray;
+  border: dashed 5px lightgray;
 }
 
 #column-top td:hover {
   background-color: gold;
+}
+
+.hide{
+  display: none;
+}
+
+.btns{
+  
+  text-align: center;
+  position: relative;
+  align-items: center;
+  height: 100px;
+  width: 250px;
+  border-radius: 100px;
+  background-color: rgb(83, 26, 196);
+}
+
+#startBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }

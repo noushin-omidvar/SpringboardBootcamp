@@ -92,14 +92,17 @@ $searchForm.on("submit", async function (evt) {
 
 async function getEpisodesOfShow(id) {
   const episodes = [];
-  // try {
-  const res = await axios.get(`http://api.tvmaze.com/shows/${id}/episodes`);
-  for (let i = 0; i < res.data.length; i++) {
-    const { id, name, season, number } = res.data[i];
+  try {
+    const res = await axios.get(`http://api.tvmaze.com/shows/${id}/episodes`);
+    for (let i = 0; i < res.data.length; i++) {
+      const { id, name, season, number } = res.data[i];
 
-    episodes.push({ id, name, season, number });
+      episodes.push({ id, name, season, number });
+    }
+    return episodes;
+  } catch (e) {
+    console.log("This is a test message!");
   }
-  return episodes;
 }
 
 /** Givenan array of episodes info, and populates that into the #episodes-list

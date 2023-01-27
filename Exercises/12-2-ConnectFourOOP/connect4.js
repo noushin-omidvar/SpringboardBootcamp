@@ -33,6 +33,7 @@ class Game {
   /** makeHtmlBoard: make HTML table and row of column tops. */
 
   makeHtmlBoard = () => {
+    document.getElementById("game").classList.toggle("hide");
     const board = document.getElementById("board");
 
     // make column tops (clickable area for adding a piece to that column)
@@ -88,11 +89,11 @@ class Game {
   /** endGame: announce game end */
 
   endGame(msg) {
+    // endGameMessage = document.createElement("div");
     alert(msg);
   }
 
   /** handleClick: handle click of column top to play piece */
-
   handleClick = (evt) => {
     // get x from ID of clicked cell
     const x = +evt.target.id;
@@ -178,6 +179,7 @@ class Game {
   };
 }
 
+document.getElementById("game").classList.toggle("hide");
 const form = document.getElementById("form");
 
 form.addEventListener("submit", (e) => {
@@ -191,8 +193,10 @@ form.addEventListener("submit", (e) => {
 
   // clear the board
   document.getElementById("board").innerHTML = "";
+  document.getElementById("game").classList.toggle("hide");
 
   //Start the game
+  document.getElementById("form").classList.toggle("hide");
   game = new Game(6, 7); // assuming constructor takes height, width
   game.makeBoard();
   game.makeHtmlBoard();
