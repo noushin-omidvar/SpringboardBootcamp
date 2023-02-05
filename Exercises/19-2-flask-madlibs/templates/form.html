@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<form action="/story" class="form-control">
+  {% for word in words %}
+  <div>
+    <label class="col-sm-2 col-form-label" for="{{word}}">{{word}} </label>
+    <input type="text" name="{{word}}" required />
+  </div>
+  <br />
+
+  {% endfor %}
+  <div>
+    <button class="btn bt-dark" type="submit">Submit</button>
+  </div>
+</form>
+{% endblock %}

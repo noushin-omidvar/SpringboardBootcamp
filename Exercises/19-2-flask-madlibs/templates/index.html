@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+
+<form action="/form" methos="POST" class="form-control">
+  <br />
+  <select class="custom-select" name="stories" required>
+    <option selected>Choose a story</option>
+    <option value="story1">Story 1</option>
+    <option value="story2">Story 2</option>
+    <option value="story3">Story 3</option>
+    <option value="story4">Story 4</option>
+  </select>
+  <br /><br />
+  <input class="btn bt-dark" type="submit" value="Submit" />
+  <br /><br />
+</form>
+
+{% endblock %}
