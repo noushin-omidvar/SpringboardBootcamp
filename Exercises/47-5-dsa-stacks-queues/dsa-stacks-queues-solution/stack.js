@@ -9,7 +9,6 @@ class Node {
 
 /** Stack: chained-together nodes where you can
  *  remove from the top or add to the top. */
-
 class Stack {
   constructor() {
     this.first = null;
@@ -20,15 +19,17 @@ class Stack {
   /** push(val): add new value to end of the stack. Returns undefined. */
 
   push(val) {
-    let newNode = new Node(val);
-    if (this.size === 0) {
-      this.first = newNode;
-      this.last = newNode;
+    let node = new Node(val);
+
+    if (!this.first) {
+      this.first = node;
+      this.last = node;
     } else {
-      newNode.next = this.first;
-      this.first.next = newNode;
-      this.first = newNode;
+      let tmp = this.first;
+      this.first = node;
+      this.first.next = tmp;
     }
+
     this.size++;
   }
 
@@ -36,14 +37,20 @@ class Stack {
    * and return its value. Should throw an error if the stack is empty. */
 
   pop() {
-    if (this.size === 0) throw Error;
-    const top = this.first;
+    if (!this.first) throw new Error("Can't pop from an empty stack.");
+
+    let temp = this.first;
+
+    if (this.first == this.last) {
+      this.last = null;
+    }
+
     this.first = this.first.next;
     this.size--;
-    return top.val;
+    return temp.val;
   }
 
-  /** peek(): return the value of the first node in the stack. */
+  /** peek(): return the value of the last node in the stack. */
 
   peek() {
     return this.first.val;
@@ -52,7 +59,7 @@ class Stack {
   /** isEmpty(): return true if the stack is empty, otherwise false */
 
   isEmpty() {
-    return this.size === 0 ? true : false;
+    return this.size === 0;
   }
 }
 
