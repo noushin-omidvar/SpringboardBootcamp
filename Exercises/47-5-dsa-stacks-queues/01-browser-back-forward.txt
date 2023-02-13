@@ -1,0 +1,32 @@
+// Initialize two stacks: backStack and forwardStack
+DECLARE backStack
+DECLARE forwardStack
+
+// Initialize a variable to keep track of the current page
+DECLARE currentPage
+
+// Go to the first page (Google in this case)
+currentPage = "Google"
+
+// Whenever a user visits a new page, push the current page onto the backStack and clear the forwardStack
+ON PAGE CHANGE
+    PUSH currentPage TO backStack
+    CLEAR forwardStack
+    currentPage = NEW PAGE
+END ON PAGE CHANGE
+
+// When the user clicks the back button, pop the top page from the backStack and push the current page onto the forwardStack
+ON BACK BUTTON CLICK
+    IF backStack IS NOT EMPTY THEN
+        PUSH currentPage TO forwardStack
+        currentPage = POP backStack
+    END IF
+END ON BACK BUTTON CLICK
+
+// When the user clicks the forward button, pop the top page from the forwardStack and push the current page onto the backStack
+ON FORWARD BUTTON CLICK
+    IF forwardStack IS NOT EMPTY THEN
+        PUSH currentPage TO backStack
+        currentPage = POP forwardStack
+    END IF
+END ON FORWARD BUTTON CLICK
