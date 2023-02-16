@@ -90,6 +90,17 @@ function binarySearch(arr, val, start = 0, end = arr.length - 1) {
   return binarySearch(arr, val, mid + 1, end);
 }
 
+function realSize(arrays, count = 0) {
+  for (let elm of arrays) {
+    if (typeof elm === "number") {
+      count++;
+    } else if (Array.isArray(elm)) {
+      count = realSize(elm, count);
+    }
+  }
+  return count;
+}
+
 module.exports = {
   product,
   longest,
@@ -99,4 +110,5 @@ module.exports = {
   revString,
   gatherStrings,
   binarySearch,
+  realSize,
 };

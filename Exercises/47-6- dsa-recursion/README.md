@@ -90,3 +90,7 @@ binarySearch([1,2,3,4],1) // 0
 binarySearch([1,2,3,4],3) // 2
 binarySearch([1,2,3,4],5) // -1
 ```
+
+## The real size of a multi-dimensional array
+
+Given a multi-dimensional integer array, return the total number of integers, stored inside this array. You should not rely on the number of dimensions to solve this kata. If n is the number of dimensions, then: 1 <= n < +Infinity.
