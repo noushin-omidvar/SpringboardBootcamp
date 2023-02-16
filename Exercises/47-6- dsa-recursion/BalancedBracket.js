@@ -11,7 +11,10 @@ function isBalanced(str, idx = 0, opened = 0) {
     return opened === 0;
   }
 
-  if (str[0] === "(" || str.length % 2 === 1) return false;
+  // If we encounter a closing bracket without a matching opening bracket, return false.
+  if (opened < 0) {
+    return false;
+  }
 
   // If we encounter an opening bracket, increment the count of opened brackets.
   if (str[idx] === "(") {
@@ -30,3 +33,4 @@ function isBalanced(str, idx = 0, opened = 0) {
 console.log(isBalanced(")("));
 console.log(isBalanced("()()()"));
 console.log(isBalanced("("));
+console.log(isBalanced("())("));
