@@ -1,103 +1,85 @@
 /**
  *
- * @param {Array} list - The split square list to be dumped
- * @param {Number} idx - The current index of list to be looked at
- * @returns {string} dumped - The string of dumped split square
+ * @param {Array} s - The split square list to be dumped
+ * @returns - The string of dumped split square
  */
 
-function dump(list, idx = 0, dumped = "") {
-  // Base case :
-  if (idx === list.length) {
-    return dumped.trim();
+function dump(s) {
+  // Base case : is already just an integer
+  if (s === 0 || s === 1) {
+    return s.toString();
+  } else {
+    return s.map(dump).join(" ");
   }
-
-  // If the input is just 0 or 1 return it as dumped
-  if ([0, 1].includes(list)) {
-    return list;
-  }
-
-  // If the current element is a nested list call the function on it
-  if (Array.isArray(list[idx])) {
-    return dump(list[idx], 0, dumped);
-  }
-
-  // If the current element is 0 or 1 dump it
-  if ([1, 0].includes(list[idx])) {
-    dumped += list[idx] + " ";
-  }
-
-  // Recursive case: call the function with the next index
-  return dump(list, idx + 1, dumped);
 }
 
 /**
  *  Given a square/split square (nested list of numbers) returns true if it is valid, and false if it is not.
  * @param {Array} square - The square to validate
- * @param {Number} idx - The index at which to look
- * @param {Boolean} - Whether the given square is a valid split square or not
- * @returns isValid
+ * @returns Boolean
  */
-
-function validate(square, idx = 0) {
-  //Base Case : if we've reached the end of the list, return true.
-  if (idx === square.length) {
-    return true;
-  }
-
-  // If the list size is not 4 return false
+function validate(square) {
+  // Base case: if the input is already just an integer, return true
   if (square === 0 || square === 1) {
     return true;
   }
 
-  // If the list size is not 4 return false
-  if (square.length !== 4) {
-    return false;
+  // Recursive case: if the input is a nested list of length 4, check that each element is valid
+  if (Array.isArray(square) && square.length === 4) {
+    return square.every(is_valid);
   }
 
-  // If the current element is a  list rather than a number (supposably splited square) call the function on the nested list
-  if (Array.isArray(square[idx])) {
-    return validate(square[idx], 0);
-  }
-
-  // If the current element is not 0 and 1 return false
-  if (![0, 1].includes(square[idx])) {
-    return false;
-  }
-
-  // Recursive case: call the function with the next index
-  return validate(square, idx + 1);
+  // If the input is not valid, return false
+  return false;
 }
 
 /**
- *  Given a square returns the maximally-simplified version of it.
- * @param {*} square
- * @param {*} idx
- * @param {*} hasSplit
- * @returns
- */
-
-function simplify(square, idx = 0, hasSplit = false) {
-  // Base case : if we've reached the end of the list, return the square.
-  if (idx === square.length) {
-    if (!hasSplit) {
-      square = square[0];
-    }
+Given a square/split square (nested list of numbers) returns the maximally-simplified version of it.
+@param {Array} square - The square to simplify
+@returns {Number|Array} - The maximally-simplified square, either a number or a nested list of numbers.
+*/
+function simplify(square) {
+  // Base case: if the square is already just an integer, return it
+  if (square === 0 || square === 1) {
     return square;
   }
+  // Recursive case: simplify the nested lists in the square and replace them in the original square
+  square = square.map(simplify(square));
 
-  // If the current element is a  list rather than a number (supposably splited square) call the function on the nested list
-  if (Array.isArray(square[idx])) {
-    square[idx] = simplify(square[idx], 0, false);
-  }
+  // If all the values in the square are equal, return the first value
+  if (Number.isInteger(square[0]) && square.every((val) => val === square[0]))
+    return square[0];
 
-  let squareFill = square[0];
-  // If the current element is not the same as first element set has split as true
-  if (square[idx] !== squareFill) {
-    hasSplit = true;
-  }
-
-  // Recursive case: call the function with the next index
-  return simplify(square, idx + 1, hasSplit);
+  // If the square is not completely simplified, return the simplified version of it
+  return square;
 }
 
-function add(s1, s2) {}
+/**
+Given two squares or split squares, returns their element-wise sum.
+@param {Array|Number} s1 - The first square to be added
+@param {Array|Number} s2 - The second square to be added
+@param {Number} idx - The current index of the square to be looked at
+@param {Array} sum - The sum of squares being built recursively
+@returns {Array|Number} - The element-wise sum of the two squares
+*/
+function add(s1, s2, idx = 0, sum = []) {
+  // base cases: if either square is 1, returns 1. If both are 0, returns 0.
+  if (s1 === 1 || s2 === 1) return 1;
+  else if ((s1 === 0) & (s2 === 0)) return 0;
+
+  // if one square is a split square and the other is a number, turn the number into a split square.
+  if (Array.isArray(s1) && !Array.isArray(s2)) {
+    s2 = [s2, s2, s2, s2];
+  }
+  if (Array.isArray(s2) && !Array.isArray(s1)) {
+    s1 = [s1, s1, s1, s1];
+  }
+
+  // recursively add each corresponding element of the two squares
+  return [
+    add(s1[0], s2[0]),
+    add(s1[1], s2[1]),
+    add(s1[2], s2[2]),
+    add(s1[3], s2[3]),
+  ];
+}
