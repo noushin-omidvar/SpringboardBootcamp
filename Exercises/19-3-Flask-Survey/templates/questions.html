@@ -1,0 +1,31 @@
+{% extends 'base.html'%} {% block title %} Question {{q_num}} {% endblock %} {%
+block content %}
+<div class="container">
+  <form action="/answer" method="GET" class="form">
+    <p>{{q_num+1}}. {{question.question}}</p>
+    {% for choice in question.choices %}  
+
+    <input
+      type="radio"
+      id="{{choice}}"
+      name="choice"
+      value="{{choice}}"
+      required
+    />
+    <label for="choice">{{choice}}</label>
+    <br />
+    {% endfor %}
+    <br />
+    {% if question.allow_text %}
+    <textarea
+      name="comments"
+      id="comments"
+      style="font-family: sans-serif; font-size: 1.2em"
+    ></textarea>
+    {% endif %}
+    <br />
+    <br />
+    <button type="submit" class="btn btn-warning">Continue</button>
+  </form>
+</div>
+{% endblock %}
