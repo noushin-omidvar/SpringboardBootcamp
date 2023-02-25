@@ -1,0 +1,64 @@
+.container{    
+  /* margin-left:5%; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  flex-direction: column; */
+}
+h1 {
+  color:rgb(56, 162, 107);
+  text-align: center;
+  }
+
+/* form {
+    font-size: 2view 0px;
+    text-align: left;
+    justify-content: center;
+    align-items: left;
+
+  } */
+
+.content {
+
+    /* text-align: left;
+    justify-content: center;
+    align-items: left; */
+
+  }
+
+
+
+.mascot {
+  color:rgb(56, 162, 107);
+}
+
+nav {
+  color:rgb(56, 162, 107);
+  font-weight:900;
+  padding-left:2%;
+  padding-top: 2%;
+  font-size:30px;
+}
+
+.form-check-input:hover{
+  text-shadow: 0.1;
+  cursor: pointer;
+}
+
+.fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: var(--fa-display,inline-block);
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+}
+
+.fa {
+  font-family: var(--fa-style-family,"Font Awesome 6 Free");
+  font-weight: var(--fa-style,900);
+}

@@ -1,0 +1,48 @@
+{% extends 'base.html'%} {% block title %} Question {{q_num}} {% endblock %} {%
+block content %}
+<div class="row col-12">
+  <h4 class="fw-bold text-center mt-3"></h4>
+  <form action="/handle_submit" method="GET" class="form">
+    <p class="fw-bold">{{q_num+1}}. {{question.question}}</p>
+    {% for choice in question.choices %} {{session[RESPONSES_KEY]}}
+    <input
+      class="form-check-input"
+      type="radio"
+      name="choice"
+      id="{{ choice }}"
+      value="{{ choice }}"
+    />
+    <label class="form-check-label" for="{{ choice }}"> {{ choice }} </label>
+    <br />
+    {% endfor %}
+    <br />
+    {% if question.allow_text %}
+    <textarea
+      name="comments"
+      id="comments"
+      style="font-family: sans-serif; font-size: 1.2em"
+    ></textarea>
+    {% endif %}
+    <br />
+    <br />
+    <input
+      type="submit"
+      name="submit_button"
+      class="btn btn-warning"
+      value="Back"
+    />
+    <input
+      type="submit"
+      name="submit_button"
+      class="btn btn-warning"
+      value="Skip"
+    />
+    <input
+      type="submit"
+      name="submit_button"
+      class="btn btn-warning"
+      value="Continue"
+    />
+  </form>
+</div>
+{% endblock %}

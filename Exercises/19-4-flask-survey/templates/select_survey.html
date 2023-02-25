@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block title %} Choose a survey {% endblock %} {%
+block content %}
+<div class="container">
+  <form action="/set_survey" , method="GET">
+    <p>Choose among the surveys:</p>
+    {% for survey in surveys.keys() %}  
+    <input
+      type="radio"
+      id="{{survey}}"
+      name="survey"
+      value="{{survey}}"
+      required
+    />
+    <label for="survey">{{survey}}</label><br />
+
+    {% endfor %}
+    <br />
+    <button class="btn btn-warning">Get Started</button>
+  </form>
+</div>
+{% endblock %}
