@@ -1,0 +1,9 @@
+.prettierrc.json
+__pycache__
+venv/
+.gitignore	
+.gitignore~
+.prettierrc.json~
+node_modules/
+package-lock.json
+package.json

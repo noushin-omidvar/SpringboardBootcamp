@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %} Boggle {% endblock %} {% block
+content %}
+<h1>Boggle Game</h1>
+<form action="">
+    <label for="guess" name="guess"> Word: </label>
+    <input type="text" name="guess" id="guess">
+    <input type="button" type="submit" value="Submit">
+</form>
+<div class="letter-board-wrapper">
+<div class="game-board" id="letter-board">
+  {% for row in session['board'] %} 
+    {% for c in row %}
+        <div class="letter">
+            <span>{{c}}</span>
+        </div>
+    {% endfor %} 
+  {% endfor %}
+</div>
+  <!-- <table>
+    <tbody>
+      {% for row in session['board'] %}
+      <tr>
+        {% for c in row %}
+        <td>{{c}}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %} {% endblock %}
+    </tbody>
+  </table> -->
+</div>
