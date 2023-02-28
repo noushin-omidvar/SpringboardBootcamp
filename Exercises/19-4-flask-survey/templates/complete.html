@@ -2,14 +2,16 @@
 content %}
 <div class="container">
   <div class="content">
-    <h1>Thanks for completing this survey!</h1>
-
+    <h1><b> Thanks for completing this survey! </b></h1>
+    <br />
+    <br />
     <p>Here is a summary of your answers:</p>
     {% for q in responses %}
     <span><b> {{q.question}} </b></span> <span>{{q.choice}} </span>
     {% if q.comment %}
     <span>{{q.comment}}</span>
     {% endif %}
+    <br />
     <br />
     {% endfor %}
   </div>

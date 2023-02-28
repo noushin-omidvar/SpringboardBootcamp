@@ -4,14 +4,11 @@ block content %}
   <h4 class="fw-bold text-center mt-3"></h4>
   <form action="/handle_submit" method="GET" class="form">
     <p class="fw-bold">{{q_num+1}}. {{question.question}}</p>
-    {% for choice in question.choices %} {{session[RESPONSES_KEY]}}
-    <input
-      class="form-check-input"
-      type="radio"
-      name="choice"
-      id="{{ choice }}"
-      value="{{ choice }}"
-    />
+    {% for choice in question.choices %} <input class="form-check-input"
+    type="radio" name="choice" id="{{ choice }}" value="{{ choice }}" {% if
+    (session['responses'][q_num]!=0) and
+    (session['responses'][q_num].get('choice', "" )==choice) %} checked {% endif
+    %} />
     <label class="form-check-label" for="{{ choice }}"> {{ choice }} </label>
     <br />
     {% endfor %}
