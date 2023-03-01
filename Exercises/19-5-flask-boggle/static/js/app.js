@@ -1,3 +1,36 @@
+let score;
+
+function pad(num, size) {
+  num = num.toString();
+  while (num.length < size) num = "0" + num;
+  return num;
+}
+
+const start = new Date();
+let timer = setInterval(function myTimer() {
+  const now = new Date();
+
+  let distance = now - start;
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  let remainingSeconds = 20 - seconds;
+  document.getElementById("timer").innerHTML =
+    pad(remainingSeconds, 2) + ` <i class="fa-solid fa-hourglass-start"></i>`;
+
+  // If the count down is finished, stop the gamme
+  if (remainingSeconds === 0) {
+    document.getElementById("timer").innerHTML = "EXPIRED";
+
+    $("#TimeOut").modal("show");
+    $(".session-score").text(score);
+    clearInterval(timer);
+  }
+}, 1000);
+
+$("#new-game").on("click", (e) => {
+  e.preventDefault();
+  location.reload();
+});
+
 // Initialize a Set to keep track of found words
 let found = new Set();
 
@@ -7,7 +40,7 @@ $("button[type=submit]").on("click", async function (event) {
 
   // Get the value of the input field
   let word = $("#guess").val();
-
+  $("#guess").val("");
   // Send an AJAX request to the server to check if the word is valid
   await axios
     .post("/", {
@@ -15,7 +48,7 @@ $("button[type=submit]").on("click", async function (event) {
     })
     .then(function (response) {
       let result = response.data.result;
-      let score = response.data.score;
+      score = response.data.score;
 
       // Check if the word has already been found
       if (found.has(word)) {

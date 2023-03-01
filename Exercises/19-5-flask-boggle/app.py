@@ -1,5 +1,6 @@
 from flask import Flask, request, session, render_template, jsonify
 from boggle import Boggle
+import time
 
 app = Flask(__name__, template_folder="templates",
             static_folder='static', static_url_path='/static')
@@ -10,9 +11,8 @@ app.secret_key = 'BoGgLe_GaMe'
 # Create an instance of the Boggle game
 boggle_game = Boggle()
 
+
 # Route to display the game board and handle user guesses
-
-
 @app.route('/', methods=['GET', 'POST'])
 def display_board():
 
@@ -32,10 +32,11 @@ def display_board():
         # Return the result and current score as a JSON object
         return jsonify({'result': result, 'score': session['score']})
 
-    # If it's a GET request, initiate the board and score
+    # If it's a GET request, initiate the board, score and timer
     board = boggle_game.make_board()
     session['board'] = board
     session['score'] = 0
+    session['timer_start'] = time.time()
 
     # Render the game board HTML template
     return render_template('board.html')
