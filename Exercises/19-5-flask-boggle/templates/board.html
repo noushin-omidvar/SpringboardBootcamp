@@ -4,9 +4,11 @@ content %}
 <form action="" , method="POST">
   <label for="guess" name="guess"> Word: </label>
   <input type="text" name="guess" id="guess" required />
-  <!-- <input type="button" value="Submit" /> -->
   <button type="submit">Submit</button>
 </form>
+
+<div id="score">0 POINTS</div>
+
 <div class="letter-board-wrapper">
   <div class="game-board" id="letter-board">
     {% for row in session['board'] %} {% for c in row %}
@@ -16,10 +18,13 @@ content %}
     {% endfor %} {% endfor %}
   </div>
 </div>
-
+<br />
 <div id="result-pannel">
+  <br />
   <div id="result"></div>
   <br />
-  <h4>Found words</h4>
+  <ul>
+    Found words
+  </ul>
 </div>
 {% endblock %}
