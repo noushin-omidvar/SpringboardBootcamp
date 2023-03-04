@@ -1,17 +1,84 @@
+body{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.navbar {
+  background-color: whitesmoke;
+  overflow:hidden;
+  font-weight: bolder;
+  font-size: 24px;
+
+ }
+ 
+.navbar a {
+     color:#00acee;
+     
+     float:left;
+     text-decoration: none;
+     text-align: center;
+     padding: 14px 16px;
+     border-radius: 3px;
+    
+ }
+
+.navbar a:hover{
+  background-color: #00acee;
+  color:whitesmoke;
+  text-decoration: none;
+}
+
+.content {
+
+  text-align: left;
+  justify-content: center;
+  align-items: left;
+
+}
+
+.container{    
+  margin-left:5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+
+.btn-primary, .btn:active, .btn:hover{
+  background-color:#00acee;
+  border-color:#00acee
+}
+
+textarea:focus, input:focus {
+  outline-color:#00acee;
+
+}
+
+#letter-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  width: 40vh;
+  height: 40vh;
+  margin: 0 auto;
+}
+
 .letter-board-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    padding: 30px;
-    width: 60vw;
-    height: 60vw;
-    box-shadow: -2px -4px 8px rgb(255 255 255 / 60%), 2px 4px 8px rgb(0 0 0 / 30%);
-    background-color: gainsboro;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  width: 45vh;
+  height: 45vh;
+  max-height: 50vh;
+  box-shadow: -2px -4px 8px rgb(255 255 255 / 60%), 2px 4px 8px rgb(0 0 0 / 30%);
+  background-color: gainsboro;
+}
+
 
 .letter {
-    border-radius: 16px;
+    border-radius: 15px;
     text-transform: capitalize;
     text-align: center;
     align-items: center;
@@ -21,18 +88,11 @@
     height: 100%;
     margin: 2%;
     box-shadow: -2px -4px 8px rgb(255 255 255 / 60%), 2px 4px 8px rgb(0 0 0 / 30%);
-    font-size: 2em;
+    font-size: 1.5em;
     
 }
  
-#letter-board {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-gap: 10px;
-        width: 60vw;
-        height: 60vw;
-        margin: 0 auto;
-      }
+
 
 .letter span {
     position: absolute;

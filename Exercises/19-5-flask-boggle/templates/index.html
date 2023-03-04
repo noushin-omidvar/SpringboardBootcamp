@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block title %} Boggle {% endblock %} {% block
+content %}
+<!-- Modal -->
+<div class="content">
+  <p><b>Find as many words as you can! </b></p>
+  <form action="/game" , name="start-game" method="POST">
+    <label for="size"> How large do you like your board game be?</label>
+    <input type="number" name="size" id="size" required />
+    <br />
+    <button type="submit" id="new-timed-game" class="btn btn-primary">
+      Play a timed game!
+    </button>
+
+    <!-- <button type="submit" id="new-untimed-game" class="btn btn-primary">
+            Play an untimed game!
+          </button> -->
+  </form>
+</div>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+{% endblock %}

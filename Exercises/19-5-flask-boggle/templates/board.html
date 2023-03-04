@@ -1,16 +1,21 @@
 {% extends 'base.html' %} {% block title %} Boggle {% endblock %} {% block
 content %}
-<h1>Boggle Game</h1>
-<form action="" , method="POST">
-  <label for="guess" name="guess"> Word: </label>
+<br />
+<form action="" , name="guess" method="POST">
+  <label for="guess"> <b>Word: </b></label>
   <input type="text" name="guess" id="guess" required />
-  <button type="submit">Submit</button>
+  <button class="btn btn-primary" type="submit" id="guess-btn">Submit</button>
 </form>
 
 <div id="score">0 POINTS</div>
 <div id="timer">60 <i class="fa-solid fa-hourglass-start"></i></div>
+
 <div class="letter-board-wrapper">
-  <div class="game-board" id="letter-board">
+  <div
+    class="game-board"
+    id="letter-board"
+    style="grid-template-columns: {{ session.get('grid_columns', 'repeat(5, 1fr)') }};"
+  >
     {% for row in session['board'] %} {% for c in row %}
     <div class="letter">
       <span>{{c}}</span>
@@ -62,4 +67,6 @@ content %}
     </div>
   </div>
 </div>
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+
 {% endblock %}

@@ -6,8 +6,8 @@ import string
 
 class Boggle():
 
-    def __init__(self):
-
+    def __init__(self, size):
+        self.size = size
         self.words = self.read_dict("words.txt")
 
     def read_dict(self, dict_path):
@@ -22,8 +22,8 @@ class Boggle():
 
         board = []
 
-        for y in range(5):
-            row = [choice(string.ascii_uppercase) for i in range(5)]
+        for y in range(self.size):
+            row = [choice(string.ascii_uppercase) for i in range(self.size)]
             board.append(row)
 
         return board
@@ -133,8 +133,8 @@ class Boggle():
         # Find starting letter --- try every spot on board and,
         # win fast, should we find the word at that place.
 
-        for y in range(0, 5):
-            for x in range(0, 5):
+        for y in range(0, self.size):
+            for x in range(0, self.size):
                 if self.find_from(board, word, y, x, seen=set()):
                     return True
 
