@@ -1,0 +1,42 @@
+Teams
+-
+teamID PK int 
+name string INDEX
+standing int 
+
+Players
+-
+playerID PK int
+playerName string
+teamID int FK - Teams.teamID
+
+
+Goals
+-
+goalID PK int
+matchID int FK >- Matches.matchID 
+playerID int FK >- Players.playerID
+time timestamp
+
+
+
+Refrees
+-
+refreeID PK int
+refreeName string
+
+
+Matches
+-
+matchID PK int
+refreeID in FK - Refrees.refreeID
+team1_id string 
+team2_id string
+seasonID in FK >- Seasons.seasonID
+
+
+Seasons
+-
+seasonID PK int
+startDate timestamp
+endDate timestamp

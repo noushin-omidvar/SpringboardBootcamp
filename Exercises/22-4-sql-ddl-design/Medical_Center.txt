@@ -1,0 +1,33 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+Doctors
+-
+doctorID PK int 
+doctorName string INDEX
+
+
+Patients
+-
+patientID PK int
+patientName string
+
+Visits
+-
+visitID PK int
+doctorID int FK >- Doctors.doctorID
+patientID int FK >- Patients.patientID
+time timestamp 
+diagnosisID int FK >- Diagnosis.diagnosisID
+
+Diagnosis
+-
+diagnosisID int PK
+visitID  int FK >- Visits.visitID
+diseaseID int FK >- Diseases.diseaseID
+
+Diseases
+-
+diseaseID PK int
+diseaseName string

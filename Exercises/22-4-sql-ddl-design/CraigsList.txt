@@ -1,0 +1,32 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+Regions
+-
+regionID PK int 
+name string INDEX
+
+
+Users
+-
+userID PK int
+userName string
+preferedRegionID int FK - Regions.regionID
+
+
+Posts
+-
+postID PK int
+title string
+text string
+userID int FK >- Users.userID
+location string
+regionID int FK >- Regions.regionID 
+categoryID int FK >- Categories.categoryID
+
+Categories
+-
+categoryID PK int
+categoryName string
+
