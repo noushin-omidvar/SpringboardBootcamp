@@ -41,7 +41,6 @@ def add_users():
     last_name = request.form['last_name']
     img_url = request.form.get(
         'img_url') or '/static/images/user-icon.png'
-    print('***************', img_url)
 
     user = User(first_name=first_name, last_name=last_name, img_url=img_url)
     db.session.add(user)
@@ -76,13 +75,12 @@ def edit_user(user_id):
 
     db.session.commit()
 
-    print('***************', user.img_url)
     return redirect(f"/users/{user.id}")
 
 
 @app.route("/users/<user_id>/delete")
 def delete_user(user_id):
-    """edit users and redirect to user page."""
+    """delet users and redirect to home page."""
 
     user = User.query.get(user_id)
     db.session.delete(user)
