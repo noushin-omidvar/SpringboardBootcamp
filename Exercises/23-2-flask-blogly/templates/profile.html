@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block title %} Users {% endblock %} {% block
+content %}
+<img src="{{user.img_url}}" alt="{{ user.full_name}}" />
+<h1>{{user.get_full_name()}}</h1>
+<a
+  class="btn btn-outline-secondary"
+  href="/users/{{user.id}}/edit"
+  role="button"
+  >Edit</a
+>
+<a class="btn btn-outline-danger" href="/users/{{user.id}}/delete" role="button"
+  >Delete</a
+>
+
+<h1>Posts</h1>
+<ul>
+  {% for post in posts %}
+  <li>
+    <a href="/posts/{{post.id}}">{{post.title}}</a>
+    <small>{{ post.created_at }}</small>
+  </li>
+  {% endfor %}
+</ul>
+
+<a
+  class="btn btn-outline-secondary"
+  href="/users/{{user.id}}/posts/new"
+  role="button"
+  >Add Post</a
+>
+
+<br />
+<br />
+<a href="/">Go back</a>
+{% endblock %}
