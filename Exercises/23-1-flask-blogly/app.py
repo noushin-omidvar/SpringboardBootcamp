@@ -19,12 +19,19 @@ connect_db(app)
 db.create_all()
 
 
-@app.route("/")
+@app.route('/')
+def root():
+    """Homepage redirects to list of users."""
+
+    return redirect("/users")
+
+
+@app.route("/users")
 def list_users():
     """List users and show add form."""
 
-    users = User.query.all()
-    return render_template("listing.html", users=users)
+    users = User.query.order_by(User.last_name, User.first_name).all()
+    return render_template("users.html", users=users)
 
 
 @app.route("/users/new")
@@ -58,8 +65,9 @@ def user_information(user_id):
 @app.route("/users/<user_id>/edit")
 def show_edit_user(user_id):
     """Show user's edit form."""
-
-    return render_template('edit_form.html', user_id=user_id)
+    user = User.query.get(user_id)
+    print('*********', user)
+    return render_template('edit_form.html', user=user)
 
 
 @app.route("/users/<user_id>/edit", methods=["POST"])

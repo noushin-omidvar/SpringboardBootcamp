@@ -39,3 +39,11 @@ class User(db.Model):
 
         p = self
         return f"It's user {p.id}: {p.first_name} {p.last_name}"
+
+    def get_full_name(self):
+        '''return user's full name'''
+        return self.first_name + ' ' + self.last_name
+
+    @property
+    def full_name(self):
+        return self.get_full_name()
