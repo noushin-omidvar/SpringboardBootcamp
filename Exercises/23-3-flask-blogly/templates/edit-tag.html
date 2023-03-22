@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block title %} New Tag {% endblock %} {%block
+content %}
+<h1>Edit tag</h1>
+<form method="POST">
+  <div class="form-group row">
+    <label for="Name" class="col-sm-2 col-form-label">Title</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        id="tag_name"
+        name="tag_name"
+        value="{{tag.name}}"
+      />
+    </div>
+  </div>
+
+  <div class="form-group text-right">
+    <a href="/tags" class="btn btn-outline-danger">Cancel</a>
+    <button type="submit" class="btn btn-secondary">Edit</button>
+  </div>
+
+  {% for post in posts %} {% if post in tag.posts %}
+  <div>
+    <input
+      type="checkbox"
+      name="post"
+      id="{{post.id}}"
+      value="{{post.title}}"
+      checked
+    />
+    {{post.title}}
+  </div>
+
+  {% else %}
+  <div>
+    <input
+      type="checkbox"
+      name="post"
+      id="{{post.id}}"
+      value="{{post.title}}"
+    />
+    {{post.title}}
+  </div>
+  {% endif %} {% endfor %}
+</form>
+{% endblock %}

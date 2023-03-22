@@ -1,0 +1,25 @@
+.tag{
+    background-color: rgb(237, 65, 35);
+    color:whitesmoke;
+    border-radius: 3px;
+   padding: 4px;
+
+}
+
+.post{
+    background-color: rgb(249, 207, 200);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+}
+
+nav{
+    background-color: tomato;
+    color: whitesmoke;
+    padding:10px;
+    padding-left: 30px;
+}
+
+a:link{
+    text-decoration: none;
+}
