@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block title %} Home {% endblock %} {% block content
+%}
+<div class="container">
+  {% for pet in pets %}
+  <div class="card d-inline-flex" style="width: 18rem">
+    <img
+      class="card-img-top"
+      src="{{pet.photo_url}}"
+      alt="{{pet.name}}"
+      sizes="300px"
+    />
+
+    <div class="card-body">
+      <h5 class="card-title">{{pet.name}}</h5>
+      <p class="card-text">
+        {{pet.name}} {% if pet.available == True %} is available! {% else %} is
+        not available. {% endif %}
+      </p>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+/* .embed-responsive .card-img-top {
+    object-fit: cover;
+} */
+
+
+.card {
+  height: 400px;
+}
+
+.card-img-top {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

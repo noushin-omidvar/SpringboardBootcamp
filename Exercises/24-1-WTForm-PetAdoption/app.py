@@ -17,3 +17,9 @@ toolbar = DebugToolbarExtension(app)
 # connecting to the database
 connect_db(app)
 db.create_all()
+
+
+@app.route('/')
+def home_page():
+    pets = Pet.query.all()
+    return render_template('home.html', pets=pets)
