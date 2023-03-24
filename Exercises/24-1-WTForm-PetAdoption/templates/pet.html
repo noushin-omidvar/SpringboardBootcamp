@@ -1,10 +1,17 @@
-{% extends 'base.html' %} {% block title %} New Pet {% endblock %} {% block
+{% extends 'base.html' %} {% block title %} {{pet.name}} {% endblock %} {% block
 content %}
 <div class="container">
-  <h1>Add a New Pet</h1>
+  <div class="text-center">
+    <img class="profile-pic" src="{{pet.photo_url}}" alt="{{pet.name}}" />
+    <div class="about-me">
+      Hey, I am <b>{{pet.name}}</b>!
+      <p>I am a cute {{pet.species}} and I am {{pet.age}} years old.</p>
+      <p>Do you want to play?</p>
+    </div>
+  </div>
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <form id="add-pet-form" method="post">
+      <form id="edit-pet-form" method="post">
         {{ form.hidden_tag() }} {% for field in form if field.widget.input_type
         != 'hidden' %}
         <div class="form-group">
@@ -15,11 +22,9 @@ content %}
         </div>
         {% endfor %}
         <br />
-        <button type="submit" class="btn btn-primary btn-lg">Add Pet</button>
+        <button type="submit" class="btn btn-primary btn-lg">Edit Pet</button>
       </form>
     </div>
   </div>
-  <br />
-  <a href="/">Go Back</a>
 </div>
 {% endblock %}

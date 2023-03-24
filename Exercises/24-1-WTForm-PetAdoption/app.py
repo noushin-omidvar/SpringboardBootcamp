@@ -45,3 +45,23 @@ def add_pet_form():
         return redirect('/')
     else:
         return render_template('new-pet.html', form=form)
+
+
+@app.route('/<pet_id>', methods=['GET', 'POST'])
+def diplay_pet(pet_id):
+    """Display information on the pet"""
+
+    pet = Pet.query.get(pet_id)
+    form = AddPetForm(obj=pet)
+
+    if form.validate_on_submit():
+        pet.name = form.name.data
+        pet.species = form.species.data
+        pet.photo_url = form.photo_url.data
+        pet.age = form.age.data
+        pet.notes = form.notes.data
+        db.session.commit()
+        flash(f"Pet {pet_id} updated!")
+        return redirect("/")
+    else:
+        return render_template('pet.html', pet=pet, form=form)
