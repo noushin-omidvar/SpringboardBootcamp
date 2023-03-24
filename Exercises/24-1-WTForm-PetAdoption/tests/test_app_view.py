@@ -21,7 +21,7 @@ db.create_all()
 
 
 class PetModelTestCase(TestCase):
-    """Test for model for Pets"""
+    """Test for views for Pets"""
 
     def setUp(self):
         """Clean up any existing pet"""
@@ -60,7 +60,7 @@ class PetModelTestCase(TestCase):
     def test_add_pet(self):
         with app.test_client() as client:
             d = {"name": "Lin", "species": "dog",
-                 "photo_url": "alaki", "age": 6}
+                 "photo_url": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60775111/4/?bust=1678478788&width=720", "age": 6}
             resp = client.post('/add', data=d, follow_redirects=True)
             html = resp.get_data(as_text=True)
 
