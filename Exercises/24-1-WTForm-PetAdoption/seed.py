@@ -17,5 +17,9 @@ lucy = Pet(name="Lucy", species='dog', age=7,
 holmes = Pet(name="Holmes", species="dog", age=5,
              photo_url="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/60024854/1/?bust=1676989779&width=720")
 
+kittie = Pet(name="Kittie", species="cat", age=2,
+             photo_url="https://unsplash.com/photos/PAcT-amBgr4", available=False)
+
+
 db.session.add_all([lucy, holmes])
 db.session.commit()
