@@ -1,14 +1,63 @@
-/* .embed-responsive .card-img-top {
-    object-fit: cover;
-} */
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .card-img-top{
+    margin-top: 1rem
+  }
+
+  .card{
+    margin-top: 1.5rem
+  }
 
 
-.card {
-  height: 400px;
-}
+  .about-me{
+    margin:10px;
+    background-color: gainsboro;
+    border-radius: 15px;
+  }
 
-.card-img-top {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
+  .profile-pic{
+    border-radius: 25px;
+  }
+
+  .form-text{
+    color: red;
+  }
+
+.navbar-brand, .navbar-brand:hover {
+    font-weight: bolder;
+    color:blueviolet
+  }
+
+.navbar-toggler{
+    color:blueviolet
+  }
+
+  h1{
+    font-weight: bolder;
+    color:blueviolet;
+    margin:10px;
+
+  }
+
+  .btn-primary,  .btn-primary:hover, .btn-primary:active, .btn-primary:focus{
+    background-color: blueviolet;
+    border-color: blueviolet;
+  }
+
+  .nav-link:hover{
+    background-color: blueviolet;
+    color: whitesmoke;
+    border-radius: 5px;
+  }
+
+  body{
+    background-color: gainsboro;
+  }
+
+  .tribe{
+    background-color: whitesmoke;
+    padding:10px;
+    border-radius: 15px;
+  }
