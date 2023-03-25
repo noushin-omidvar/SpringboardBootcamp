@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block title %} Home {% endblock %} {% block
+content%}
+<div class="text-center">
+  <div class="tribe">
+    <h1>Pets Available for Adoption</h1>
+    <div class="row mb-4 d-flex justify-content-evenly">
+      {% for pet in pets_avail %}
+
+      <div class="card col-md-4" style="width: 18rem">
+        <img
+          class="card-img-top"
+          src="{{pet.photo_url}}"
+          alt="{{pet.name}}"
+          height="300px"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{pet.name}}</h5>
+          <p class="card-text">{{pet.name}} is available!</p>
+
+          <a href="/{{pet.id}}" class="btn btn-primary stretched-link">
+            Let's meet!</a
+          >
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="tribe">
+    <h1>You know a Pet looking for a buddy?</h1>
+    <p>Add them to <b style="color: blueviolet">PetMe</b> tribe!</p>
+    <a href="/add" class="btn btn-primary">Add a Pet</a>
+  </div>
+</div>
+
+{% endblock %}

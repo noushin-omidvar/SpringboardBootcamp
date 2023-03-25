@@ -22,6 +22,14 @@
 </div>
 
 <div class="form-group">
+  {{ form.photo_file.label(class_="form-label") }} {{
+  form.photo_file(class_="form-control") }} {% for error in
+  form.photo_file.errors %}
+  <small class="form-text"> {{ error }} </small>
+  {% endfor %}
+</div>
+
+<div class="form-group">
   {{ form.age.label(class_="form-label") }} {{ form.age(class_="form-control")
   }} {% for error in form.age.errors %}
   <small class="form-text"> {{ error }} </small>
