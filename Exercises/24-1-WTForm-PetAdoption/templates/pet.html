@@ -1,29 +1,26 @@
-{% extends 'base.html' %} {% block title %} {{pet.name}} {% endblock %} {% block
-content %}
+{% from "pet-form.html" import render_pet_form %} {% extends 'base.html' %} {%
+block title %} {{pet.name}} {% endblock %} {% block content %}
 <div class="container">
-  <div class="text-center">
-    <img class="profile-pic" src="{{pet.photo_url}}" alt="{{pet.name}}" />
-    <div class="about-me">
-      Hey, I am <b>{{pet.name}}</b>!
-      <p>I am a cute {{pet.species}} and I am {{pet.age}} years old.</p>
-      <p>Do you want to play?</p>
+  <div class="tribe">
+    <div class="text-center">
+      <img class="profile-pic" src="{{pet.photo_url}}" alt="{{pet.name}}" />
+      <div class="about-me">
+        Hey, I am <b>{{pet.name}}</b>!
+        <p>I am a cute {{pet.species}} and I am {{pet.age}} years old.</p>
+        <p>Do you want to play?</p>
+      </div>
     </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <form id="edit-pet-form" method="post">
-        {{ form.hidden_tag() }} {% for field in form if field.widget.input_type
-        != 'hidden' %}
-        <div class="form-group">
-          {{field.label}} {{field(class_="form-control")}} {% for error in
-          field.errors %}
-          <small class="form-text"> {{ error }} </small>
-          {% endfor %}
-        </div>
-        {% endfor %}
-        <br />
-        <button type="submit" class="btn btn-primary btn-lg">Edit Pet</button>
-      </form>
+  <div class="tribe">
+    <div class="row justify-content-center">
+      <h1>Edit Pet</h1>
+      <div class="col-md-8">
+        <form id="edit-pet-form" method="post">
+          {{ form.csrf_token }} {{ render_pet_form(form) }}
+          <br />
+          <button type="submit" class="btn btn-primary btn-lg">Edit Pet</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

@@ -34,6 +34,7 @@ def home_page():
     pets_avail = Pet.query.filter_by(available=True).all()
     print(pets_avail)
     pets_gone = Pet.query.filter_by(available=False).all()
+    print(pets_gone)
     return render_template('home.html', pets_avail=pets_avail, pets_gone=pets_gone)
 
 

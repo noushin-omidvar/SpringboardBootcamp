@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {% block title %} Home {% endblock %} {% block
 content%}
-<div class="container text-center">
-  <h1>Pets</h1>
-
+<div class="text-center">
   <div class="tribe">
     <h1>Pets Available for Adoption</h1>
     <div class="row mb-4 d-flex justify-content-evenly">
@@ -30,10 +28,7 @@ content%}
   <div class="trib">
     <h1>Pets Already Found Their Home</h1>
 
-    {% if pets_gone==[] %}
-    <p>All of our pets are waiting for their buddies!</p>
-
-    {% else %}
+    {% if pets_gone %}
     <div class="row mb-4 d-flex justify-content-evenly">
       {% for pet in pets_gone %}
 
@@ -58,6 +53,9 @@ content%}
       </div>
       {% endfor %}
     </div>
+    {% else %}
+    <p>All of our pets are waiting for their buddies!</p>
+
     {% endif %}
   </div>
   <div class="tribe">
