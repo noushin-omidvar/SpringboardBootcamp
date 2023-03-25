@@ -41,7 +41,12 @@ body {
   .navbar-toggler {
     color: whitesmoke;
   }
-  
+
+  /* Footer style */
+footer {
+    background-color: blueviolet;
+    color: whitesmoke;
+  }
   /* Form styles */
   .form-group {
     margin-bottom: 20px;
@@ -49,6 +54,10 @@ body {
   
   .form-text {
     color: red;
+  }
+
+  .form-label{
+    font-weight: bolder;
   }
   
   /* Card styles */
