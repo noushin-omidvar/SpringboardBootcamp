@@ -3,17 +3,20 @@
   }
 
   .card-img-top{
-    margin-top: 1rem
+    margin-top: 1rem;
+    border-radius: 15px;
+    
   }
 
   .card{
-    margin-top: 1.5rem
+    margin-top: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px;
   }
 
 
   .about-me{
     margin:10px;
-    background-color: gainsboro;
     border-radius: 15px;
   }
 
@@ -25,19 +28,32 @@
     color: red;
   }
 
+nav{
+    background-color: blueviolet;
+    color: whitesmoke;
+}
+.nav-link:hover{
+    background-color: blueviolet;
+    color: whitesmoke;
+    border-radius: 5px;
+  }
+
 .navbar-brand, .navbar-brand:hover {
+    font-size:40px;
+    color:whitesmoke;
+    padding-left:30px;
     font-weight: bolder;
-    color:blueviolet
   }
 
 .navbar-toggler{
-    color:blueviolet
+    color:whitesmoke;
   }
 
   h1{
     font-weight: bolder;
     color:blueviolet;
     margin:10px;
+    padding-left:20px;
 
   }
 
@@ -46,18 +62,22 @@
     border-color: blueviolet;
   }
 
-  .nav-link:hover{
-    background-color: blueviolet;
-    color: whitesmoke;
-    border-radius: 5px;
-  }
+
 
   body{
-    background-color: gainsboro;
+    background-color: whitesmoke;
   }
 
   .tribe{
-    background-color: whitesmoke;
+    background-color: #fff;
     padding:10px;
-    border-radius: 15px;
+    margin:20px;
+    border-radius:15px;
+    box-shadow: 0.25px 0.25px 0.25px 0.25px;
+
+  }
+
+  footer{
+    background-color: blueviolet;
+    color:whitesmoke
   }
