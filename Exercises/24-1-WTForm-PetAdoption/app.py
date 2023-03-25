@@ -1,6 +1,6 @@
 """Adopt Application"""
 
-from flask import Flask, render_template, redirect, flash
+from flask import Flask, render_template, redirect, flash, request
 from flask_debugtoolbar import DebugToolbarExtension
 from forms import AddPetForm
 from models import db, connect_db, Pet
@@ -44,14 +44,10 @@ def add_pet_form():
     form = AddPetForm()
     if form.validate_on_submit():
         # create new Pet object with form data
-        pet = Pet(
-            name=form.name.data,
-            species=form.species.data,
-            photo_url=form.photo_url.data,
-            age=form.age.data,
-            available=True,
-            notes=form.notes.data
-        )
+        pet_data = {key: value for key, value in request.form.items()
+                    if key != 'csrf_token'}
+        pet = Pet(**pet_data)
+
         # add to session and commit changes
         db.session.add(pet)
         db.session.commit()
