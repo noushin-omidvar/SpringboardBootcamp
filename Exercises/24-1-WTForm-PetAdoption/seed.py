@@ -21,5 +21,5 @@ kittie = Pet(name="Kittie", species="cat", age=2,
              photo_url="https://unsplash.com/photos/PAcT-amBgr4", available=False)
 
 
-db.session.add_all([lucy, holmes])
+db.session.add_all([lucy, holmes, kittie])
 db.session.commit()
