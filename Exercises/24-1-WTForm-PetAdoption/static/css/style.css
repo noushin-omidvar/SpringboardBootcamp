@@ -1,83 +1,84 @@
-.mb-4 {
-    margin-bottom: 1.5rem !important;
+/* Global styles */
+body {
+    background-color: whitesmoke;
   }
-
-  .card-img-top{
-    margin-top: 1rem;
-    border-radius: 15px;
-    
+  
+  h1 {
+    font-weight: bolder;
+    color: blueviolet;
+    margin: 10px;
+    padding-left: 20px;
   }
-
-  .card{
-    margin-top: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0.5px 0.5px 0.5px 0.5px;
+  
+  .btn-primary,
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary:focus {
+    background-color: blueviolet;
+    border-color: blueviolet;
   }
-
-
-  .about-me{
-    margin:10px;
-    border-radius: 15px;
-  }
-
-  .profile-pic{
-    border-radius: 25px;
-  }
-
-  .form-text{
-    color: red;
-  }
-
-nav{
+  
+  /* Navigation styles */
+  nav {
     background-color: blueviolet;
     color: whitesmoke;
-}
-.nav-link:hover{
+  }
+  
+  .navbar-brand,
+  .navbar-brand:hover {
+    font-size: 40px;
+    color: whitesmoke;
+    padding: 30px;
+    font-weight: bolder;
+  }
+  
+  .nav-link:hover {
     background-color: blueviolet;
     color: whitesmoke;
     border-radius: 5px;
   }
-
-.navbar-brand, .navbar-brand:hover {
-    font-size:40px;
-    color:whitesmoke;
-    padding-left:30px;
-    font-weight: bolder;
+  
+  .navbar-toggler {
+    color: whitesmoke;
   }
-
-.navbar-toggler{
-    color:whitesmoke;
+  
+  /* Form styles */
+  .form-group {
+    margin-bottom: 20px;
   }
-
-  h1{
-    font-weight: bolder;
-    color:blueviolet;
-    margin:10px;
-    padding-left:20px;
-
+  
+  .form-text {
+    color: red;
   }
-
-  .btn-primary,  .btn-primary:hover, .btn-primary:active, .btn-primary:focus{
-    background-color: blueviolet;
-    border-color: blueviolet;
+  
+  /* Card styles */
+  .card {
+    margin-top: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px;
   }
-
-
-
-  body{
-    background-color: whitesmoke;
+  
+  .card-img-top {
+    margin-top: 1rem;
+    border-radius: 15px;
   }
-
-  .tribe{
+  
+  /* About me styles */
+  .about-me {
+    margin: 10px;
+    border-radius: 15px;
+  }
+  
+  /* Profile picture styles */
+  .profile-pic {
+    border-radius: 25px;
+  }
+  
+  /* Tribe styles */
+  .tribe {
     background-color: #fff;
-    padding:10px;
-    margin:20px;
-    border-radius:15px;
-    box-shadow: 0.25px 0.25px 0.25px 0.25px;
-
-  }
-
-  footer{
-    background-color: blueviolet;
-    color:whitesmoke
+    padding: 10px;
+    margin-top: 20px;
+    /* border-radius: 15px; */
+    /* box-shadow: 0.25px 0.25px 0.25px 0.25px; */
   }
