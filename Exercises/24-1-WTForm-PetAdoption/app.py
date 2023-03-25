@@ -1,19 +1,24 @@
 """Adopt Application"""
 
+import os
 from flask import Flask, render_template, redirect, flash, request
 from flask_debugtoolbar import DebugToolbarExtension
 from forms import AddPetForm
 from models import db, connect_db, Pet
+from werkzeug.utils import secure_filename
+
 
 app = Flask(__name__)
-
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'static/uploads')
 # Configuration
 app.config.update(
     SQLALCHEMY_DATABASE_URI='postgresql:///adopt',  # database URI
     SQLALCHEMY_TRACK_MODIFICATIONS=False,  # disable modification tracking
     SQLALCHEMY_ECHO=True,  # log SQL statements
     SECRET_KEY='AdOpT',  # secret key for Flask sessions
-    DEBUG_TB_INTERCEPT_REDIRECTS=False  # disable debug toolbar redirects
+    DEBUG_TB_INTERCEPT_REDIRECTS=False,  # disable debug toolbar redirects
+    UPLOAD_FOLDER=UPLOAD_FOLDER
+
 )
 
 # Debug toolbar
@@ -29,13 +34,24 @@ db.create_all()
 @app.route('/')
 def home_page():
     """Show home page with list of pets"""
-    pets = Pet.query.all()
-    print(pets)
-    pets_avail = Pet.query.filter_by(available=True).all()
-    print(pets_avail)
-    pets_gone = Pet.query.filter_by(available=False).all()
-    print(pets_gone)
+
+    pets_avail = Pet.query.filter_by(available=True).all()[:2]
+    pets_gone = Pet.query.filter_by(available=False).all()[:2]
     return render_template('home.html', pets_avail=pets_avail, pets_gone=pets_gone)
+
+
+@app.route('/waiting-pets')
+def waiting_page():
+    """Show waiting pets page with list of pets"""
+    pets_avail = Pet.query.filter_by(available=True).all()
+    return render_template('waiting-pets.html', pets_avail=pets_avail)
+
+
+@app.route('/happy-pets')
+def happy_page():
+    """Show waiting pets page with list of pets"""
+    pets_gone = Pet.query.filter_by(available=False).all()
+    return render_template('happy-pets.html', pets_gone=pets_gone)
 
 
 @app.route('/add', methods=['GET', 'POST'])
@@ -43,6 +59,13 @@ def add_pet_form():
     """Add pet form"""
     form = AddPetForm()
     if form.validate_on_submit():
+
+        file = request.files['photo_file']
+        if file:
+            filename = secure_filename(file.filename)
+            print(filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
         # create new Pet object with form data
         pet_data = {key: value for key, value in request.form.items()
                     if key != 'csrf_token'}
