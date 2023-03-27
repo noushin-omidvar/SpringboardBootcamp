@@ -142,7 +142,6 @@ class CupcakeViewsTestCase(TestCase):
             self.assertEqual(resp.status_code, 200)
 
             data = resp.json
-            print(data)
             self.assertEqual(data, {
                 "message": "Deleted"
             })
