@@ -11,7 +11,7 @@ def connect_db(app):
     db.init_app(app)
 
 
-class cupcakes(db.Model):
+class Cupcake(db.Model):
     """Cupcakes"""
 
     __tablename__ = "cupcakes"
@@ -26,9 +26,20 @@ class cupcakes(db.Model):
     size = db.Column(db.String,
                      nullable=False)
 
-    rating = db.Column(db.string,
+    rating = db.Column(db.String,
                        nullable=False)
 
-    image = db.Column(db.string,
+    image = db.Column(db.String,
                       nullable=False,
                       default="https://tinyurl.com/demo-cupcake")
+
+    def serialize(self):
+        """Serialze Cupcake obj to dictionary"""
+
+        return {
+            "id": self.id,
+            "flavor": self.flavor,
+            "size": self.size,
+            "rating": self.rating,
+            "image": self.image
+        }
