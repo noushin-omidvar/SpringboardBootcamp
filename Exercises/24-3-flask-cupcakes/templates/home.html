@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1>Cupcakes on the shelf:</h1>
+<div class="container">
+  <div class="row mb-4 d-flex justify-content-evenly" id="shelf"></div>
+</div>
+
+<div class="container d-flex">
+  <form action="">
+    <div class="form-group">
+      <label for="flavor">Flavor</label>
+      <input
+        class="form-control"
+        aria-describedby="flavor"
+        placeholder="Enter flavor"
+        name="flavor"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="size">Size</label>
+      <input class="form-control" placeholder="Size" name="size" required />
+    </div>
+    <div class="form-group">
+      <label for="rating">rating</label>
+      <input name="rating" class="form-control" placeholder="rating" required />
+    </div>
+    <div class="form-group">
+      <label for="image">Image URL</label>
+      <input
+        type="url"
+        name="image"
+        class="form-control"
+        placeholder="https://example.com"
+        pattern="https://.*"
+      />
+    </div>
+    <button id="add-cake" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

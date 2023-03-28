@@ -29,6 +29,11 @@ def page_not_found(e):
 # Routes
 
 
+@app.route("/")
+def show_home_page():
+    return render_template("home.html")
+
+
 @app.route('/api/cupcakes')
 def get_cupcakes():
     """Get data about all cupcakes."""
@@ -55,11 +60,17 @@ def create_cupcake():
     rating = request.json.get('rating')
     image = request.json.get('image')
 
-    new_cupcake = Cupcake(flavor=flavor,
-                          size=size,
-                          rating=rating,
-                          image=image
-                          )
+    if image:
+        new_cupcake = Cupcake(flavor=flavor,
+                              size=size,
+                              rating=rating,
+                              image=image
+                              )
+    else:
+        new_cupcake = Cupcake(flavor=flavor,
+                              size=size,
+                              rating=rating,
+                              )
 
     db.session.add(new_cupcake)
     db.session.commit()

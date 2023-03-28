@@ -1,0 +1,13 @@
+.card{
+    margin:10px;
+    padding: 10px;
+}
+
+.card-img-top{
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.card-title{
+    text-align: center;
+}
