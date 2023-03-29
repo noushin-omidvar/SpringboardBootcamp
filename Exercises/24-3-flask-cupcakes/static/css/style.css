@@ -1,3 +1,4 @@
+
 .card{
     margin:10px;
     padding: 10px;
@@ -10,4 +11,49 @@
 
 .card-title{
     text-align: center;
+    color: orange;
+    font-weight: bolder;
+}
+
+.navbar{
+    color: orange;
+    padding:20px;
+    text-align: center;
+}
+
+.navbar-brand, .navbar-brand:hover, .navbar-header{
+    color: orange;
+    text-align: center;
+    font-weight: bolder;
+    font-size:70px;
+}
+
+.nav-link, .nav-link:link{
+    color:gray;
+    font-size:20px
+}
+.nav-link:hover, .nav-link:active{
+    color:orange;
+    font-size:20px
+}
+
+.shelf{
+    background-color: whitesmoke;
+    padding:10px;
+    margin-top:10px;
+    margin-bottom: 10px
+
+}
+
+footer{
+    background-color:orange;
+    color: whitesmoke;
+    margin-top: 20px;
+    padding: 20px;
+
+
+}
+
+.form-group{
+    margin-bottom: 10px;;
 }
