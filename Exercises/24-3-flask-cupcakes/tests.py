@@ -147,3 +147,31 @@ class CupcakeViewsTestCase(TestCase):
             })
 
             self.assertEqual(Cupcake.query.count(), initial_count-1)
+
+    def test_get_cupcake_not_found(self):
+        """Test that GET /api/cupcakes/<cupcake_id> returns 404 if the cupcake doesn't exist"""
+        with app.test_client() as client:
+            response = client.get('/api/cupcakes/999')
+            data = response.get_json()
+            self.assertEqual(response.status_code, 404)
+            self.assertEqual(
+                data['error'], '404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.')
+
+    def test_update_cupcake_not_found(self):
+        """Test that PATCH /api/cupcakes/<cupcake_id> returns 404 if the cupcake doesn't exist"""
+        with app.test_client() as client:
+            response = client.patch('/api/cupcakes/999',
+                                    json={'flavor': 'Updated Flavor'})
+            data = response.get_json()
+            self.assertEqual(response.status_code, 404)
+            self.assertEqual(
+                data['error'], '404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.')
+
+    def test_delete_cupcake_not_found(self):
+        """Test that DELETE /api/cupcakes/<cupcake_id> returns 404 if the cupcake doesn't exist"""
+        with app.test_client() as client:
+            response = client.delete('/api/cupcakes/999')
+            data = response.get_json()
+            self.assertEqual(response.status_code, 404)
+            self.assertEqual(
+                data['error'], '404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.')
