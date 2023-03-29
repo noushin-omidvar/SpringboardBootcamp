@@ -64,6 +64,12 @@ def login():
     return render_template('register.html', form=form)
 
 
+@app.route('/logout')
+def logout():
+    session["user_name"].pop()
+    return redirect('/')
+
+
 @app.route('/secret')
 def show_secret():
     """Only shown to logged in users"""
