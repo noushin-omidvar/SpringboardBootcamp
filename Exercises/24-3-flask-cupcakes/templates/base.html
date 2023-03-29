@@ -11,11 +11,52 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="static/css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/dc9be90fa8.js"
+      crossorigin="anonymous"
+    ></script>
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-    {% block content %}{% endblock %}
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header mx-auto">
+          <a class="navbar-brand text-center" href="/">
+            <i class="fa-solid fa-cookie-bite"></i> Cuppie bite
+          </a>
+        </div>
+      </div>
+    </nav>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home |</a>
+      </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="#shelf"> Shelf |</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#add-form"> Add a flavor</a>
+      </li>
+    </ul>
+    <div class="container">
+      <form class="form-inline d-flex my-2 my-lg-0">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button type="button" class="btn btn-warning" id="search-button">
+          Search
+        </button>
+      </form>
+    </div>
+    {% block content %}{% endblock %}
+    <footer>
+      <p class="text-center">© 2023 Cuppie CUPCAKES, All rights reserved</p>
+    </footer>
     <script
       src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
       integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="

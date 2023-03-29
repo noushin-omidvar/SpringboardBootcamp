@@ -7,7 +7,7 @@ function newCupCake(cupcake) {
   );
   card.html(`
   <div class="card-header">
-  <button class="btn btn-danger delete-btn small float-right">X</button>
+  <button class="btn btn-danger delete-btn btn-sm float-right">X</button>
 
     <img class="card-img-top" src="${cupcake.image}" alt="${cupcake.flavor}" >
   </div>
@@ -61,6 +61,28 @@ $("#shelf").on("click", ".delete-btn", async function (e) {
   await axios.delete(`api/cupcakes/${cupcakeId}`);
   $cupcakeCard.remove();
 });
+
+function searchCupcakes() {
+  // Get the search term from the input field
+  const searchTerm = document.getElementById("search-input").value;
+
+  // Send an AJAX request to the backend with the search term
+  fetch(`/api/cupcakes/search?term=${searchTerm}`)
+    .then((response) => response.json())
+    .then((data) => {
+      // Update the list of cupcakes with the filtered list returned from the backend
+      const cupcakes = data.cupcakes;
+      const cupcakeList = document.getElementById("cupcake-list");
+      cupcakeList.innerHTML = "";
+
+      cupcakes.forEach((cupcake) => {
+        const cupcakeDiv = document.createElement("div");
+        cupcakeDiv.innerText = cupcake.flavor;
+        cupcakeList.appendChild(cupcakeDiv);
+      });
+    })
+    .catch((error) => console.error(error));
+}
 
 // Call the async function to get and display the data
 showData();

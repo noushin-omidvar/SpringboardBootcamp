@@ -22,11 +22,28 @@ toolbar = DebugToolbarExtension(app)
 connect_db(app)
 
 
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     return render_template('404_page.html'), 404
+
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404_page.html'), 404
+    return jsonify(error=str(e)), 404
 
 # Routes
+
+
+@app.route('/api/cupcakes')
+def search_cupcakes():
+    search_term = request.args.get('search_term')
+    cupcakes = None
+    if search_term:
+        cupcakes = Cupcake.query.filter(
+            Cupcake.flavor.ilike(f"%{search_term}%")).all()
+    else:
+        cupcakes = Cupcake.query.all()
+    serialized_cupcakes = [cupcake.serialize() for cupcake in cupcakes]
+    return jsonify(cupcakes=serialized_cupcakes)
 
 
 @app.route("/")

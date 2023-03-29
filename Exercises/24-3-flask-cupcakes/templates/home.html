@@ -1,42 +1,77 @@
 {% extends 'base.html' %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1>Cupcakes on the shelf:</h1>
-<div class="container">
-  <div class="row mb-4 d-flex justify-content-evenly" id="shelf"></div>
+<br />
+<div class="shelf">
+  <div class="container">
+    <h3 class="text-center"><b>Cupcakes on the shelf</b></h3>
+    <div class="row mb-4 d-flex justify-content-evenly" id="shelf"></div>
+  </div>
 </div>
-
-<div class="container d-flex">
-  <form action="">
-    <div class="form-group">
-      <label for="flavor">Flavor</label>
-      <input
-        class="form-control"
-        aria-describedby="flavor"
-        placeholder="Enter flavor"
-        name="flavor"
-        required
-      />
+<div class="container" id="add-form">
+  <br />
+  <h3 class="text-center"><b>Looking for different Flaver</b></h3>
+  <div class="row">
+    <div class="col-md-5">
+      <br />
+      <br />
+      <br />
+      Cuppie Cakes is inspired by fresh ingredients and family recipes. We
+      believe in not cutting corners and no day-olds – just good old-fashioned
+      fresh baking. Using our Grandmother’s chocolate cake and our Mom’s vanilla
+      cake recipes we went to work serving the best cupcakes we knew how to
+      bake.
+      <br />
+      <br />
+      <h4 class="text-center">Add what you like to the shelf!</h4>
     </div>
-    <div class="form-group">
-      <label for="size">Size</label>
-      <input class="form-control" placeholder="Size" name="size" required />
+    <div class="col-md-1"></div>
+    <div class="col-md-6 justify-content-evenly">
+      <br />
+      <form action="">
+        <div class="form-group">
+          <label for="flavor">Flavor</label>
+          <input
+            class="form-control"
+            aria-describedby="flavor"
+            placeholder="Enter flavor"
+            name="flavor"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="size">Size</label>
+          <input class="form-control" placeholder="Size" name="size" required />
+        </div>
+        <div class="form-group">
+          <label for="rating">rating</label>
+          <input
+            name="rating"
+            class="form-control"
+            placeholder="rating"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="image">Image URL</label>
+          <input
+            type="url"
+            name="image"
+            class="form-control"
+            placeholder="https://example.com"
+            pattern="https://.*"
+          />
+        </div>
+        <br />
+        <button
+          id="add-cake"
+          type="submit"
+          class="btn btn-secondary pull-right"
+        >
+          Add a new flavoor
+        </button>
+      </form>
     </div>
-    <div class="form-group">
-      <label for="rating">rating</label>
-      <input name="rating" class="form-control" placeholder="rating" required />
-    </div>
-    <div class="form-group">
-      <label for="image">Image URL</label>
-      <input
-        type="url"
-        name="image"
-        class="form-control"
-        placeholder="https://example.com"
-        pattern="https://.*"
-      />
-    </div>
-    <button id="add-cake" type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  </div>
 </div>
 
 {% endblock %}
