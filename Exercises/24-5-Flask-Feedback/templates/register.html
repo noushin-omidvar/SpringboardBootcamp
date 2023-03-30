@@ -1,7 +1,7 @@
-{% extends 'base.html' %} {% block title %} Sign UP {% endblock %} {% block
+{% extends 'base.html' %} {% block title %} Sign up {% endblock %} {% block
 content %}
 <div class="container">
-  <h1 class="text text-success mt-5">Sign Up</h1>
+  <h1 class="text text-success mt-5">Sign up</h1>
   <form method="post">
     {{ form.hidden_tag() }}
     <!--add type=hidden form fields -->
@@ -11,7 +11,7 @@ content %}
     <div class="form-group mb-4">
       {{ field.label(class_="form-label") }} {{ field(class_="form-control") }}
       {% for error in field.errors %}
-      <small>{{ error(class_='text text-danger') }}</small> {% endfor %}
+      <small class="text text-danger">{{ error }}</small> {% endfor %}
     </div>
 
     {% endfor %}

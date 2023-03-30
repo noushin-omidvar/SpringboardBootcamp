@@ -37,8 +37,8 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
-        session["user_name"] = new_user.username
-        return redirect('/secret')
+        session["username"] = new_user.username
+        return redirect(f"/users/{new_user.username}")
 
     return render_template('register.html', form=form)
 
@@ -49,32 +49,42 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        user_name = form.user_name
-        password = form.password
+        username = form.username.data
+        password = form.password.data
 
-        user = User.authenticate(user_name, password)
+        print("**********", username)
+        user = User.authenticate(username, password)
 
         if user:
-            session["user_name"] = user_name  # keep logged in
-            return redirect("/secret")
+            session["username"] = username  # keep logged in
+
+            return redirect(f"/users/{username}")
 
         else:
             form.username.errors = ["Invalid Username/Password"]
-
+    print('***********We also passed this')
     return render_template('register.html', form=form)
 
 
 @app.route('/logout')
 def logout():
-    session["user_name"].pop()
+    session.pop("username")
     return redirect('/')
 
 
-@app.route('/secret')
-def show_secret():
+@app.route('/users/<username>')
+def show_user(username):
     """Only shown to logged in users"""
-    if "user_name" not in session:
+
+    if "username" not in session:
         flash("You must be logged in to view!")
         return redirect("/")
 
-    return render_template('secret.html')
+    user = User.query.filter_by(username=username).first()
+    first_name = user.first_name
+    last_name = user.last_name
+    email = user.email
+
+    user_data = {'User Name': username, 'First name': first_name,
+                 "Last name": last_name, "E-mail": email}
+    return render_template('user.html', user_data=user_data)

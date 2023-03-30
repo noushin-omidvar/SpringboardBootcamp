@@ -48,7 +48,7 @@ class User(db.Model):
         return cls(username=username, password=hashed_utf8, email=email, first_name=first_name, last_name=last_name)
 
     @classmethod
-    def authenticate(username, password, email, first_name, last_name):
+    def authenticate(cls, username, password):
         """Validate that user exists & password is correct.
 
         Return user if valid; else return False.

@@ -10,6 +10,7 @@
       integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/static/css/style.css" />
 
     <title>{% block title %}{% endblock %}</title>
   </head>
@@ -22,6 +23,17 @@
         >
           <i class="bi bi-aspect-ratio"></i> TellMe!
         </a>
+
+        <div class="navbar-nav navbar-light d-flex flex-row">
+          {% if not session['username'] %}
+          <a class="btn btn-success btn-log" href="/login">Log in</a>
+          <a class="btn btn-outline-success btn-log" href="/register"
+            >Sign up</a
+          >
+          {% else %}
+          <a class="btn btn-success btn-log" href="/logout">Log out</a>
+          {% endif %}
+        </div>
       </div>
     </nav>
     {% block content %}{% endblock %} {% with messages = get_flashed_messages()
