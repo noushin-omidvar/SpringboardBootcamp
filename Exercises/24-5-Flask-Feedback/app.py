@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, flash, session
+from flask import Flask, render_template, redirect, request, flash, session, abort
 from models import db, connect_db, User, Feedback
 from forms import RegisterForm, LoginForm, FeedbackForm
 
@@ -18,6 +18,16 @@ connect_db(app)
 db.create_all()
 
 
+@app.errorhandler(404)
+def show_page_not_found(e):
+    return render_template('404-page.html'), 404
+
+
+@app.errorhandler(401)
+def show_page_not_found(e):
+    return render_template('401-page.html'), 401
+
+
 @app.route('/')
 def show_home():
     """Home Page"""
@@ -26,6 +36,9 @@ def show_home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if "username" in session:
+        return redirect(f"/users/{session['username']}")
+
     """Register Page"""
     form = RegisterForm()
 
@@ -45,6 +58,10 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+
+    if "username" in session:
+        return redirect(f"/users/{session['username']}")
+
     """Login Page"""
     form = LoginForm()
 
@@ -76,9 +93,9 @@ def show_user(username):
 
     if "username" not in session:
         flash("You must be logged in to view!")
-        return redirect("/")
+        abort(401)
 
-    user = User.query.filter_by(username=username).first()
+    user = User.query.get_or_404(username)
     first_name = user.first_name
     last_name = user.last_name
     email = user.email
@@ -97,7 +114,7 @@ def delete_user(username):
     if session['username'] != username:
         return redirect('/')
 
-    user = User.query.get(username)
+    user = User.query.get_or_404(username)
     db.session.delete(user)
     db.session.commit()
     return redirect('/')
@@ -124,7 +141,7 @@ def show_feedback_form(username):
 
 @app.route('/feedback/<feedback_id>/update', methods=['GET', 'POST'])
 def edit_feedback(feedback_id):
-    feedback = Feedback.query.get(feedback_id)
+    feedback = Feedback.query.get_or_404(feedback_id)
 
     if session['username'] != feedback.username:
         return redirect('/')
@@ -144,7 +161,7 @@ def edit_feedback(feedback_id):
 
 @app.route('/feedback/<feedback_id>/delete', methods=['POST'])
 def delete_feedback(feedback_id):
-    feedback = Feedback.query.get(feedback_id)
+    feedback = Feedback.query.get_or_404(feedback_id)
     """Delete feedback"""
     if session['username'] != feedback.username:
         return redirect('/')
