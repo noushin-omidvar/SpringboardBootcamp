@@ -61,3 +61,23 @@ class User(db.Model):
             return u
         else:
             return False
+
+
+class Feedbak(db.Model):
+    """Feedback table"""
+
+    __tabelname__ = "feedbacks"
+
+    id = db.Column(db.Integer,
+                   primary_key=True,
+                   autoincrement=True)
+
+    title = db.Column(db.String(100),
+                      nullable=False)
+
+    content = db.Column(db.String,
+                        nullable=False)
+
+    username = db.Column(db.String,
+                         db.ForeignKey("users.username"),
+                         nullable=False)
