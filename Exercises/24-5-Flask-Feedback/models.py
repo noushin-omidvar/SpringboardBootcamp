@@ -36,6 +36,12 @@ class User(db.Model):
     last_name = db.Column(db.String(30),
                           nullable=False)
 
+    feedbacks = db.relationship(
+        'Feedback', backref='user', cascade="all, delete-orphan")
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+
     @classmethod
     def register(cls, username, password, email, first_name, last_name):
         """Register user w/hashed password & return user."""
@@ -63,7 +69,7 @@ class User(db.Model):
             return False
 
 
-class Feedbak(db.Model):
+class Feedback(db.Model):
     """Feedback table"""
 
     __tabelname__ = "feedbacks"
@@ -81,3 +87,6 @@ class Feedbak(db.Model):
     username = db.Column(db.String,
                          db.ForeignKey("users.username"),
                          nullable=False)
+
+    def __repr__(self):
+        return '<Feedback %r>' % self.title
