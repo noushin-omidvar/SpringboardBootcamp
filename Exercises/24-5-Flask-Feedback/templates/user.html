@@ -1,9 +1,62 @@
 {% extends 'base.html' %} {% block title %} Sign UP {% endblock %} {% block
 content %}
 <div class="container">
-  <h1 class="text text-success mt-5">User Info</h1>
+  <div class="row">
+    <div class="col">
+      <h1 class="text text-success mt-5">User Info</h1>
+    </div>
+    <div class="col text-right">
+      {% if session['username'] %}
+      <form action="">
+        <button type="submit" class="btn btn-outline-danger mt-5">
+          Delete my account
+        </button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
   {% for key, value in user_data.items() %}
   <p><b>{{ key }}:</b> {{ value }}</p>
   {% endfor %}
+
+  <h2>Feedbacks</h2>
+  <ul>
+    {% for feedback in feedbacks %}
+
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{feedback.title}}</h5>
+
+        <div class="row">
+          <div class="col-4">
+            <small> by {{feedback.username}}</small>
+          </div>
+          {% if session['username'] %}
+          <div class="col-2">
+            <form action="/feedback/{{feedback.id}}/update">
+              <button class="btn btn-link" type="submit">
+                <small><i class="fa-solid fa-pen-to-square"></i></small>
+              </button>
+            </form>
+          </div>
+
+          <div class="col-2">
+            <form action="/feedback/{{feedback.id}}/delete" method="post">
+              <button class="btn btn-link" type="submit">
+                <small><i class="fa-regular fa-trash-can"></i></small>
+              </button>
+            </form>
+          </div>
+          {% endif %}
+        </div>
+
+        <p class="card-text">{{feedback.content}}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </ul>
+  <form action="/users/{{user_data['User Name']}}/feedback/add">
+    <button class="btn btn-success" type="submit">Add a feedback</button>
+  </form>
 </div>
 {% endblock %}
