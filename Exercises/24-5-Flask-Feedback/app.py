@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, request, flash, session
-from models import db, connect_db, User
-from forms import RegisterForm, LoginForm
+from models import db, connect_db, User, Feedback
+from forms import RegisterForm, LoginForm, FeedbackForm
 
 app = Flask(__name__)
 
@@ -52,7 +52,6 @@ def login():
         username = form.username.data
         password = form.password.data
 
-        print("**********", username)
         user = User.authenticate(username, password)
 
         if user:
@@ -62,8 +61,7 @@ def login():
 
         else:
             form.username.errors = ["Invalid Username/Password"]
-    print('***********We also passed this')
-    return render_template('register.html', form=form)
+    return render_template('login.html', form=form)
 
 
 @app.route('/logout')
@@ -87,4 +85,70 @@ def show_user(username):
 
     user_data = {'User Name': username, 'First name': first_name,
                  "Last name": last_name, "E-mail": email}
-    return render_template('user.html', user_data=user_data)
+
+    feedbacks = user.feedbacks
+    print(feedbacks)
+    return render_template('user.html', user_data=user_data, feedbacks=feedbacks)
+
+
+@app.route('/users/<username>/delete', methods=['POST'])
+def delete_user(username):
+    """Delete User"""
+    if session['username'] != username:
+        return redirect('/')
+
+    user = User.query.get(username)
+    db.session.delete(user)
+    db.session.commit()
+    return redirect('/')
+
+
+@app.route('/users/<username>/feedback/add', methods=['GET', 'POST'])
+def show_feedback_form(username):
+    if session['username'] != username:
+        return redirect('/')
+
+    form = FeedbackForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        content = form.content.data
+
+        feedback = Feedback(title=title, content=content, username=username)
+        db.session.add(feedback)
+        db.session.commit()
+
+        return redirect(f'/users/{username}')
+
+    return render_template('feedback-add.html', form=form)
+
+
+@app.route('/feedback/<feedback_id>/update', methods=['GET', 'POST'])
+def edit_feedback(feedback_id):
+    feedback = Feedback.query.get(feedback_id)
+
+    if session['username'] != feedback.username:
+        return redirect('/')
+
+    form = FeedbackForm()
+    if form.validate_on_submit():
+
+        feedback.title = form.title.data
+        feedback.content = form.content.data
+
+        db.session.commit()
+
+        return redirect(f'/users/{feedback.username}')
+
+    return render_template('feedback-edit.html', form=form, feedback=feedback)
+
+
+@app.route('/feedback/<feedback_id>/delete', methods=['POST'])
+def delete_feedback(feedback_id):
+    feedback = Feedback.query.get(feedback_id)
+    """Delete feedback"""
+    if session['username'] != feedback.username:
+        return redirect('/')
+
+    db.session.delete(feedback)
+    db.session.commit()
+    return redirect(f'/users/{feedback.username}')
