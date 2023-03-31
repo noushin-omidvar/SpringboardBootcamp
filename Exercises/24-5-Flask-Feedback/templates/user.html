@@ -6,7 +6,8 @@ content %}
       <h1 class="text text-success mt-5">User Info</h1>
     </div>
     <div class="col text-right">
-      {% if session['username'] %}
+      {% if session['username']== user_data['User Name'] or session['is_admin']
+      %}
       <form action="">
         <button type="submit" class="btn btn-outline-danger mt-5">
           Delete my account

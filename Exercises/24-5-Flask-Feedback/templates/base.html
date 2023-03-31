@@ -35,6 +35,7 @@
             >Sign up</a
           >
           {% else %}
+          <a href="/" class="nav-link m-3">{{session['username']}}</a>
           <a class="btn btn-success btn-log" href="/logout">Log out</a>
           {% endif %}
         </div>
