@@ -1,0 +1,40 @@
+def merge(arr1, arr2):
+    output = []
+
+    i = 0 
+    j= 0
+    while i<len(arr1) and j<len(arr2):
+        if arr1[i] < arr2[j]:
+            output.append(arr1[i])
+            i+=1
+        else:
+            output.append(arr2[j])
+            j+=1
+    
+    output += arr1[i:] + arr2[j:]
+    return output
+
+def mergeSort(arr):
+
+    if len(arr)<=1:
+        return arr
+
+    mid = len(arr)//2
+    right = mergeSort(arr[:mid])
+    left = mergeSort(arr[mid:])
+
+    return merge(right, left)
+
+
+mergeSort([4, 20, 12, 10, 7, 9]) # [4, 7, 9, 10, 12, 20]
+mergeSort([0, -10, 7, 4]) # [-10, 0, 4, 7]
+mergeSort([1, 2, 3]) # [1, 2, 3]
+mergeSort([])
+
+nums = [
+    4, 3, 5, 3, 43, 232, 4, 34, 232, 32, 4, 35, 34, 23, 2,
+    453, 546, 75, 67, 4342, 32
+]
+
+print(mergeSort(nums)) # [2, 3, 3, 4, 4, 4, 5, 23, 32, 32, 34, 34, 35,
+                 #  43, 67, 75, 232, 232, 453, 546, 4342]
