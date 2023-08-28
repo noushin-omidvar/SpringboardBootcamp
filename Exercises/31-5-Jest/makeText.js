@@ -37,11 +37,6 @@ async function main() {
       if (inputPath.startsWith("http://") || inputPath.startsWith("https://")) {
         try {
           text = await textFromWeb(inputPath);
-          const mm = new MarkovMachine(text);
-          mm.makeChains();
-
-          const generatedText = mm.makeText((numWords = 50));
-          console.log(generatedText);
         } catch (error) {
           console.error("Error fetching text from URL:", error.message);
           process.exit(1);
@@ -56,6 +51,11 @@ async function main() {
       );
       process.exit(1);
     }
+    const mm = new MarkovMachine(text);
+    mm.makeChains();
+
+    const generatedText = mm.makeText((numWords = 50));
+    console.log(generatedText);
   } else {
     console.error("Usage: node makeText.js [file / url] <path_to_file_or_url>");
     process.exit(1);

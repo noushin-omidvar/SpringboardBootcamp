@@ -1,7 +1,7 @@
 const MarkovMachine = require("../markov.js");
 
 describe("MarkovMachine", () => {
-  const sampleText = "the cat in the hat";
+  const sampleText = "The cat in the hat";
 
   test("constructor should properly split and filter words", () => {
     const markovMachine = new MarkovMachine(sampleText);
@@ -12,7 +12,8 @@ describe("MarkovMachine", () => {
     const markovMachine = new MarkovMachine(sampleText);
     const chains = markovMachine.makeChains();
     expect(chains).toEqual({
-      the: ["cat", "hat"],
+      The: ["cat"],
+      the: ["hat"],
       cat: ["in"],
       in: ["the"],
       hat: [undefined],

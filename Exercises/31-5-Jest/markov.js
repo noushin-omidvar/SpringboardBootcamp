@@ -1,10 +1,11 @@
 /** Textual markov chain generator */
+const striptags = require("striptags");
 
 class MarkovMachine {
   /** build markov machine; read in text.*/
 
   constructor(text) {
-    let words = text.split(/[ \r\n]+/);
+    let words = striptags(text).split(/[ \r\n]+/);
     this.words = words.filter((c) => c !== "");
     this.makeChains();
   }
@@ -28,10 +29,22 @@ class MarkovMachine {
 
   makeText(numWords = 100) {
     let mc = this.makeChains();
-    let curr_word = this.words[Math.trunc(Math.random() * this.words.length)];
+    let startWords = this.words.filter((word) => /^[A-Z].*[.?!]$/.test(word));
+
+    if (startWords.length === 0) {
+      throw new Error("No suitable starting words found.");
+    }
+    let curr_word = startWords[Math.trunc(Math.random() * startWords.length)];
     let newText = curr_word;
     let count = numWords - 1;
     while (count > 0) {
+      // if (
+      //   curr_word.endsWith(".") ||
+      //   curr_word.endsWith("!") ||
+      //   curr_word.endsWith("?")
+      // ) {
+      //   break; // Stop if the current word ends with a period, exclamation mark, or question mark
+      // }
       let idx = Math.trunc(Math.random() * mc[curr_word].length);
       curr_word =
         typeof mc[curr_word][idx] !== "undefined"
@@ -40,6 +53,7 @@ class MarkovMachine {
       newText += " " + curr_word;
       count--;
     }
+
     return newText;
   }
 }
