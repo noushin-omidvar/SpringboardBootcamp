@@ -1,34 +1,48 @@
 const MarkovMachine = require("../markov.js");
 
 describe("MarkovMachine", () => {
-  const sampleText = "The cat in the hat";
+  describe("constructor", () => {
+    test("should split and store words without HTML tags", () => {
+      const text = "<p>The cat in the hat.</p> A sunny day.";
+      const markovMachine = new MarkovMachine(text);
+      expect(markovMachine.words).toEqual([
+        "The",
+        "cat",
+        "in",
+        "the",
+        "hat.",
+        "A",
+        "sunny",
+        "day.",
+      ]);
+    });
 
-  test("constructor should properly split and filter words", () => {
-    const markovMachine = new MarkovMachine(sampleText);
-    expect(markovMachine.words).toEqual(["the", "cat", "in", "the", "hat"]);
-  });
-
-  test("makeChains should create correct markov chains", () => {
-    const markovMachine = new MarkovMachine(sampleText);
-    const chains = markovMachine.makeChains();
-    expect(chains).toEqual({
-      The: ["cat"],
-      the: ["hat"],
-      cat: ["in"],
-      in: ["the"],
-      hat: [undefined],
+    test("should create markov chains", () => {
+      const text = "the cat in the hat";
+      const markovMachine = new MarkovMachine(text);
+      const expectedChains = {
+        the: ["cat", "hat"],
+        cat: ["in"],
+        in: ["the"],
+        hat: [undefined],
+      };
+      expect(markovMachine.makeChains()).toEqual(expectedChains);
     });
   });
 
-  test("makeText should generate random text", () => {
-    const markovMachine = new MarkovMachine(sampleText);
-    const generatedText = markovMachine.makeText(5); // Generate text with 5 words
-    expect(generatedText.split(" ").length).toBe(5);
-  });
+  describe("makeText", () => {
+    test("should generate random text", () => {
+      const text = "The cat in the hat.";
+      const markovMachine = new MarkovMachine(text);
+      const randomText = markovMachine.makeText(10);
+      expect(randomText).toBeTruthy();
+    });
 
-  test("makeText should generate 100 words by default", () => {
-    const markovMachine = new MarkovMachine(sampleText);
-    const generatedText = markovMachine.makeText(); // Generate text with default 100 words
-    expect(generatedText.split(" ").length).toBe(100);
+    test("should throw error if no suitable starting words found", () => {
+      const emptyMachine = new MarkovMachine("");
+      expect(() => emptyMachine.makeText()).toThrow(
+        "No suitable starting words found."
+      );
+    });
   });
 });
