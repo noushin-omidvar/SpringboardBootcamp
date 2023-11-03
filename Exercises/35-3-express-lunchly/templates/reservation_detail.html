@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block title %}{{ customer.firstName }} {{
+customer.lastName }}{% endblock %} {% block content %}
+
+<h1>{{ customer.fullName }}</h1>
+
+<h3>Edit Reservation</h3>
+<form
+  action="/{{ customer.id }}/edit-reservation/{{reservation.id}}"
+  method="POST"
+>
+  <div class="form-group">
+    <label for="start">Start</label>
+    <input
+      id="start"
+      class="form-control"
+      name="startAt"
+      placeholder="yyyy-mm-dd HH:mm"
+      type="datetime-local"
+      value="{{ reservation.start_at }}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="num-guests"># of Guests:</label>
+    <input
+      class="form-control"
+      name="numGuests"
+      type="number"
+      id="num-guests"
+      value="{{reservation.num_guests}}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="notes">Notes:</label>
+    <textarea
+      class="form-control"
+      name="notes"
+      id="notes"
+      value="{{reservation.note}}"
+    ></textarea>
+  </div>
+  <button class="btn btn-primary">Save</button>
+</form>
+
+{% endblock %}
