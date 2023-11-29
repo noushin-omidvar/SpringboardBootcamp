@@ -1,0 +1,32 @@
+/* Pokecard.css */
+
+/* Styles for PokeCard */
+.PokeCard {
+    background-color: whitesmoke;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 10px;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .PokeCard:hover {
+    background-color: lightgray;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styles for PokeCard image */
+  .PokeCard-img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .PokeCard-img:hover {
+    transform: scale(1.1);
+  }
+  

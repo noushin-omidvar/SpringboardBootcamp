@@ -1,0 +1,59 @@
+/* Pokedex.css */
+
+/* Styles for Pokedex */
+.Pokedex {border: 2px solid black;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for Pokecard row */
+  .Pokecard-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    flex-wrap: nowrap;
+   overflow-x: auto; /* Allow horizontal scrolling if necessary
+    padding: 10px 0; /* Adjust padding as needed */
+  }
+  
+  /* Styles for PokeCard */
+  .PokeCard {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 200px; /* Adjust the width of each Pokecard */
+  }
+  
+  .PokeCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styles for PokeCard image */
+  .PokeCard-img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .PokeCard-img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Styles for winner message */
+  .winner-msg {
+    color: green;
+    font-weight: bold;
+  }
+  
+  /* Styles for total experience */
+  .total-exp {
+    margin-top: 10px;
+  }
+  
