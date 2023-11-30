@@ -12,7 +12,9 @@ class ExpressError extends Error {
   }
 }
 
-/** 404 NOT FOUND error. */
+/** 404 NOT FOUND error.
+ * the server cannot find the requested resource
+ */
 
 class NotFoundError extends ExpressError {
   constructor(message = "Not Found") {
@@ -20,7 +22,11 @@ class NotFoundError extends ExpressError {
   }
 }
 
-/** 401 UNAUTHORIZED error. */
+/** 401 UNAUTHORIZED error.
+ * the client request has not been completed
+ * because it lacks valid authentication credentials
+ * for the requested resource
+ */
 
 class UnauthorizedError extends ExpressError {
   constructor(message = "Unauthorized") {
@@ -28,7 +34,10 @@ class UnauthorizedError extends ExpressError {
   }
 }
 
-/** 400 BAD REQUEST error. */
+/** 400 BAD REQUEST error.
+ * the server cannot or will not process the request
+ * due to something that is perceived to be a client error
+ */
 
 class BadRequestError extends ExpressError {
   constructor(message = "Bad Request") {
@@ -36,7 +45,10 @@ class BadRequestError extends ExpressError {
   }
 }
 
-/** 403 BAD REQUEST error. */
+/** 403 BAD REQUEST error.
+ * indicates that the server understands the request
+ * but refuses to authorize it.
+ */
 
 class ForbiddenError extends ExpressError {
   constructor(message = "Bad Request") {

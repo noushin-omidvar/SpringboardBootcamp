@@ -1,0 +1,15 @@
+
+.eightball {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center; /* Horizontally center the text inside the circle */
+    align-items: center; /* Vertically center the text inside the circle */
+  }
+  
+  .eightball-text {
+    font-size: 1.5em; /* Adjust the font size as needed */
+  }

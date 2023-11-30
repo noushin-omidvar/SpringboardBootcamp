@@ -1,6 +1,10 @@
 "use strict";
 
-/** Shared config for application; can be required many places. */
+/** Shared config for application; can be required many places. 
+ * Centralizes system configuration like ports, secrets, work factors
+ * Reads from environment variables for flexibility across environments
+ * Exports constants used throughout the app
+*/
 
 require("dotenv").config();
 require("colors");
