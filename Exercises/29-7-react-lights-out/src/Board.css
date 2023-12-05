@@ -1,0 +1,5 @@
+/* Style for the game board */
+.Board {
+  margin: 0 auto;
+  border-spacing: 5px; /* Adjust spacing between cells */
+}

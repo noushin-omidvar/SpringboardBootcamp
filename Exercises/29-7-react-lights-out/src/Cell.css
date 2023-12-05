@@ -1,0 +1,15 @@
+/* Style for individual cells */
+.Cell {
+  height: 100px;
+  width: 100px;
+  background-color: darkgray;
+  cursor: pointer;
+  border-radius: 10px; /* Rounded corners for cells */
+  transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+/* Style for lit cells */
+.Cell-lit {
+  background-color: white;
+  box-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00; /* Glow effect for lit cells */
+}
