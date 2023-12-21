@@ -1,0 +1,15 @@
+/* NavBar.css */
+.NavBar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  
+  
+.MyNavLink{
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin:5px
+}
